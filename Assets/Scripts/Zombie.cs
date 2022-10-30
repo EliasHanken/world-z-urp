@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+
 
 public class Zombie : MonoBehaviour
 {
@@ -70,6 +72,8 @@ public class Zombie : MonoBehaviour
         PopulateAnimationStartBoneTransforms(_standUpClipName, _standUpBoneTransforms);
 
         DisableRagdoll();
+
+        StartCoroutine(rotateZombieRandom());
     }
 
     // Update is called once per frame
@@ -122,6 +126,7 @@ public class Zombie : MonoBehaviour
         _timeToWakeUp = Random.Range(5, 10);
     } 
 
+
     public Rigidbody FindHitRigidbody(Vector3 hitPoint)
     {
         Rigidbody closestRigidbody = null;
@@ -139,6 +144,17 @@ public class Zombie : MonoBehaviour
         }
 
         return closestRigidbody;
+    }
+
+    private IEnumerator rotateZombieRandom(){
+        while(true){
+            int wait_time = Random.Range(5,15);
+            yield return new WaitForSeconds(wait_time);
+            if(_currentState == ZombieState.Idle){
+                _animator.SetTrigger("turn");
+            }
+            
+        }
     }
       
     public void DisableRagdoll()
