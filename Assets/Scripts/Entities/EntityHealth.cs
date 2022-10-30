@@ -63,6 +63,17 @@ public class EntityHealth : MonoBehaviour
 
     private void Die()
     {
+        GameObject obj = GameObject.FindGameObjectWithTag("ObjectiveHandler");
+        if(obj.GetComponent<ObjectiveHandler>() != null){
+            ObjectiveHandler objectiveHandler = obj.GetComponent<ObjectiveHandler>();
+
+            List<GameObject> kill_list_obj = objectiveHandler.getObjective(ObjectiveHandler.ObjectiveType.entity_kills);
+            foreach(GameObject go in kill_list_obj){
+                if(tag == go.GetComponent<ObjectiveKill>().tag){
+                    go.GetComponent<ObjectiveKill>().increaseProgressByOne();
+                }
+            }
+        }
         hasDied = true;
         if(GetComponent<Zombie>() != null) return;
         foreach (Rigidbody rb in rigidbodies)

@@ -33,6 +33,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = m_TimeScaleRef;
         AudioListener.volume = m_VolumeRef;
         m_Paused = false;
+        Time.timeScale = 1f;
     }
 
 
@@ -49,15 +50,14 @@ public class PauseMenu : MonoBehaviour
     }
 
 
-#if !MOBILE_INPUT
 	void Update()
 	{
 		if(Input.GetKeyUp(KeyCode.Escape))
 		{
 		    m_MenuToggle.isOn = !m_MenuToggle.isOn;
-            Cursor.visible = m_MenuToggle.isOn;//force the cursor visible if anythign had hidden it
+            Time.timeScale = 0.1f;
 		}
 	}
-#endif
+
 
 }

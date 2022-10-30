@@ -6,6 +6,7 @@ TagManager:
   tags:
   - EntityHead
   - Weapon
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - Hands
   - Interactable
   - NoCollision
-  - 
+  - Radar
   - 
   - 
   - 
@@ -42,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Radar
+    uniqueID: 2661210567
     locked: 0

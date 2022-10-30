@@ -1045,6 +1045,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 3076060511857444426}
     m_Modifications:
     - target: {fileID: 3042265040161300112, guid: 52d5843cb079eb9438f2f5f67eacfb21, type: 3}
@@ -1156,6 +1157,7 @@ PrefabInstance:
       value: AmmoUI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 52d5843cb079eb9438f2f5f67eacfb21, type: 3}
 --- !u!224 &3076060510989943322 stripped
 RectTransform:
@@ -1167,6 +1169,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 3076060511857444426}
     m_Modifications:
     - target: {fileID: 2293127003734314448, guid: 38f57efa528f08c4987359490627188a, type: 3}
@@ -1262,6 +1265,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 38f57efa528f08c4987359490627188a, type: 3}
 --- !u!224 &3076060512096587079 stripped
 RectTransform:
@@ -1273,6 +1277,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 3076060511857444426}
     m_Modifications:
     - target: {fileID: 7480924362867925931, guid: 53a19fc51fd0a3e4a8249948774f5426, type: 3}
@@ -1372,6 +1377,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 53a19fc51fd0a3e4a8249948774f5426, type: 3}
 --- !u!224 &3076060512268195168 stripped
 RectTransform:
@@ -1383,6 +1389,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 2
     m_TransformParent: {fileID: 3076060511857444426}
     m_Modifications:
     - target: {fileID: 7391164798742445928, guid: 6efa0657d71006e43bcd56bf707a40cc, type: 3}
@@ -1478,6 +1485,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 6efa0657d71006e43bcd56bf707a40cc, type: 3}
 --- !u!224 &1405500926 stripped
 RectTransform:
