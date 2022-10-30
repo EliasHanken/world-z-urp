@@ -28,8 +28,8 @@ public class Radar : MonoBehaviour {
     public bool usePlayerDirection = true;
     private bool remove_blips = false;
     public Transform player;
-    public GameObject blipRedPrefab,blipGreenPrefab,blipBluePrefab;
-    public string redBlipTag = "Zombie", greenBlipTag = "NPC", blueBlipTag = "Player";
+    public GameObject blipRedPrefab,blipGreenPrefab,blipBluePrefab,blipYellowPrefab;
+    public string redBlipTag = "Zombie", greenBlipTag = "NPC", blueBlipTag = "Player", yellowBlipTag = "Objective";
  
     private float radarWidth, radarHeight, blipWidth, blipHeight;
 
@@ -82,6 +82,7 @@ public class Radar : MonoBehaviour {
             DisplayBlips(redBlipTag, blipRedPrefab);
             DisplayBlips(greenBlipTag, blipGreenPrefab); 
             DisplayBlips(blueBlipTag, blipBluePrefab); 
+            DisplayBlips(yellowBlipTag, blipYellowPrefab); 
         }
     }
     private void DisplayBlips(string tag, GameObject prefabBlip) {
@@ -100,6 +101,8 @@ public class Radar : MonoBehaviour {
                     if(target.GetComponent<EntityHealth>().health > 0){
                         DrawBlip(blipPosition, prefabBlip);
                     }
+                }else{
+                    DrawBlip(blipPosition, prefabBlip);
                 }
                 
             }

@@ -179,20 +179,38 @@ public class Gun : MonoBehaviour
                 forceDirection.Normalize();
 
                 Vector3 force = impactForce * forceDirection;
+
+                if(entityHealth.health > 0){
+                    //fastToggleRagdoll(zombie,force/30,hit.point);
+                }
             
                 if(entityHealth.health <= 0){
                     zombie.TriggerRagdoll(force/30,hit.point);
+                    if(zombie.isDead) return;
+                    if(zombie.canBeReborn){
+                        if(zombie._reborn){
+                            GameObject obj = GameObject.FindGameObjectWithTag("ObjectiveHandler");
+                            ObjectiveHandler objectiveHandler = obj.GetComponent<ObjectiveHandler>();
+
+                            List<GameObject> kill_list_obj = objectiveHandler.getObjective(ObjectiveHandler.ObjectiveType.entity_kills);
+                                foreach(GameObject go in kill_list_obj){
+                                go.GetComponent<ObjectiveKill>().increaseProgressByOne();
+                            }
+                        }
+                    }else{
+                        if(!zombie.isDead){
+                            GameObject obj = GameObject.FindGameObjectWithTag("ObjectiveHandler");
+                            ObjectiveHandler objectiveHandler = obj.GetComponent<ObjectiveHandler>();
+
+                            List<GameObject> kill_list_obj = objectiveHandler.getObjective(ObjectiveHandler.ObjectiveType.entity_kills);
+                            foreach(GameObject go in kill_list_obj){
+                                go.GetComponent<ObjectiveKill>().increaseProgressByOne();
+                            }
+                        }
+                    }
 
                     
-                    GameObject obj = GameObject.FindGameObjectWithTag("ObjectiveHandler");
-                    ObjectiveHandler objectiveHandler = obj.GetComponent<ObjectiveHandler>();
-
-                    List<GameObject> kill_list_obj = objectiveHandler.getObjective(ObjectiveHandler.ObjectiveType.entity_kills);
-                    foreach(GameObject go in kill_list_obj){
-                        go.GetComponent<ObjectiveKill>().increaseProgressByOne();
-                        Debug.Log("added kill");
-                        
-                    }
+                    
                 }
             }
             
@@ -206,6 +224,18 @@ public class Gun : MonoBehaviour
     }
     void resetAnim(){
         anim.SetBool("shoot",false);
+    }
+
+    IEnumerator fastToggleRagdoll(Zombie zombie,Vector3 force,Vector3 hit){
+        zombie.EnableRagdoll();
+        Rigidbody hitRigidbody = zombie.FindHitRigidbody(hit);
+
+        hitRigidbody.AddForceAtPosition(force, hit, ForceMode.Impulse);
+        zombie._currentState = Zombie.ZombieState.Ragdoll;
+        yield return new WaitForSeconds(0.1f);
+        
+        zombie.DisableRagdoll();
+        zombie._currentState = Zombie.ZombieState.Idle;
     }
 
     void finishReload(){

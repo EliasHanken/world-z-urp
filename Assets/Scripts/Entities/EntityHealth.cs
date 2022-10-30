@@ -43,19 +43,11 @@ public class EntityHealth : MonoBehaviour
     }
 
     void Update(){
-        if(GetComponent<Zombie>() != null) return;
+        if(GetComponent<Zombie>()){
+            return;
+        }
         if(health <= 0){
             if(!isPlayer){
-                Debug.Log("added kill");
-                GameObject obj = GameObject.FindGameObjectWithTag("ObjectiveHandler");
-                ObjectiveHandler objectiveHandler = obj.GetComponent<ObjectiveHandler>();
-
-                List<GameObject> kill_list_obj = objectiveHandler.getObjective(ObjectiveHandler.ObjectiveType.entity_kills);
-                foreach(GameObject go in kill_list_obj){
-                    if(tag == go.GetComponent<ObjectiveKill>().tag){
-                        go.GetComponent<ObjectiveKill>().increaseProgressByOne();
-                    }
-                }
                 countdown -= Time.deltaTime;
                 if(countdown <= 0f && hasDied){
                     Destroy(gameObject); 

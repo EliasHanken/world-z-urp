@@ -690,7 +690,7 @@
         "m_SerializedTexture": "{\"texture\":{\"instanceID\":0}}",
         "m_Guid": ""
     },
-    "m_DefaultType": 0
+    "m_DefaultType": 3
 }
 
 {
@@ -1700,7 +1700,7 @@
     "m_StageCapability": 3,
     "m_Value": {
         "x": 0.0,
-        "y": 30.0
+        "y": 9.300000190734864
     },
     "m_DefaultValue": {
         "x": 0.0,
