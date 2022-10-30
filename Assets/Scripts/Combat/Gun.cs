@@ -182,6 +182,17 @@ public class Gun : MonoBehaviour
             
                 if(entityHealth.health <= 0){
                     zombie.TriggerRagdoll(force/30,hit.point);
+
+                    
+                    GameObject obj = GameObject.FindGameObjectWithTag("ObjectiveHandler");
+                    ObjectiveHandler objectiveHandler = obj.GetComponent<ObjectiveHandler>();
+
+                    List<GameObject> kill_list_obj = objectiveHandler.getObjective(ObjectiveHandler.ObjectiveType.entity_kills);
+                    foreach(GameObject go in kill_list_obj){
+                        go.GetComponent<ObjectiveKill>().increaseProgressByOne();
+                        Debug.Log("added kill");
+                        
+                    }
                 }
             }
             

@@ -25,9 +25,19 @@ public class ObjectiveHandler : MonoBehaviour
             if(obj.GetComponent<ObjectiveKill>() != null){
                 ObjectiveKill objectiveKill = obj.GetComponent<ObjectiveKill>();
                 if(objectiveKill.kills >= objectiveKill.targetKills){
-                    Destroy(obj);
+                    objectiveKill.status = Objective.Status.Passed;
+                    StartCoroutine(destroyObjective(obj));
                 }
             }
+        }
+    }
+
+    IEnumerator destroyObjective(GameObject objective){
+        bool destroyed = false;
+        while(!destroyed){
+            yield return new WaitForSeconds(2);
+            Destroy(gameObject);
+            destroyed = true;
         }
     }
 

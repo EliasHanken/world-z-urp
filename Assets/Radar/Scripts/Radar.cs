@@ -13,6 +13,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Radar : MonoBehaviour {
 
@@ -25,6 +26,7 @@ public class Radar : MonoBehaviour {
     private List<Collider2D> colliderList;
     public float radarDistance = 20, blipSize = 15;
     public bool usePlayerDirection = true;
+    private bool remove_blips = false;
     public Transform player;
     public GameObject blipRedPrefab,blipGreenPrefab,blipBluePrefab;
     public string redBlipTag = "Zombie", greenBlipTag = "NPC", blueBlipTag = "Player";
@@ -41,6 +43,8 @@ public class Radar : MonoBehaviour {
         radarHeight = GetComponent<RectTransform>().rect.height;
         blipHeight  = radarHeight * blipSize/100;
         blipWidth   = radarWidth * blipSize/100;
+
+        StartCoroutine(displayBlipsEachTime(2,2f));
     }
 
     private void Update() {
@@ -52,10 +56,33 @@ public class Radar : MonoBehaviour {
             colliderList.Clear();
         }
 
-        RemoveAllBlips();
-        DisplayBlips(redBlipTag, blipRedPrefab);
-        DisplayBlips(greenBlipTag, blipGreenPrefab); 
-        DisplayBlips(blueBlipTag, blipBluePrefab); 
+        if(remove_blips){
+            GameObject[] blips = GameObject.FindGameObjectsWithTag("RadarBlip");
+            
+            foreach (GameObject blip in blips){
+                Color newColor = blip.GetComponent<RawImage>().color;
+                newColor.a = 0;
+                blip.GetComponent<RawImage>().color = Color.Lerp(blip.GetComponent<RawImage>().color,newColor,2*Time.deltaTime);
+            }
+        }
+    }
+
+    IEnumerator displayBlipsEachTime(float time, float alive){
+        bool displayed = false;;
+        while(true){
+            if(displayed){
+                remove_blips = true;
+                yield return new WaitForSeconds(alive);
+                RemoveAllBlips();
+                displayed = false;
+            }
+            yield return new WaitForSeconds(time);
+            
+            displayed = true;
+            DisplayBlips(redBlipTag, blipRedPrefab);
+            DisplayBlips(greenBlipTag, blipGreenPrefab); 
+            DisplayBlips(blueBlipTag, blipBluePrefab); 
+        }
     }
     private void DisplayBlips(string tag, GameObject prefabBlip) {
         Vector3 playerPos = player.position;

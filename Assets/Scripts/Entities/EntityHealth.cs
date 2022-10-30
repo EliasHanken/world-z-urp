@@ -46,6 +46,16 @@ public class EntityHealth : MonoBehaviour
         if(GetComponent<Zombie>() != null) return;
         if(health <= 0){
             if(!isPlayer){
+                Debug.Log("added kill");
+                GameObject obj = GameObject.FindGameObjectWithTag("ObjectiveHandler");
+                ObjectiveHandler objectiveHandler = obj.GetComponent<ObjectiveHandler>();
+
+                List<GameObject> kill_list_obj = objectiveHandler.getObjective(ObjectiveHandler.ObjectiveType.entity_kills);
+                foreach(GameObject go in kill_list_obj){
+                    if(tag == go.GetComponent<ObjectiveKill>().tag){
+                        go.GetComponent<ObjectiveKill>().increaseProgressByOne();
+                    }
+                }
                 countdown -= Time.deltaTime;
                 if(countdown <= 0f && hasDied){
                     Destroy(gameObject); 
@@ -63,17 +73,6 @@ public class EntityHealth : MonoBehaviour
 
     private void Die()
     {
-        GameObject obj = GameObject.FindGameObjectWithTag("ObjectiveHandler");
-        if(obj.GetComponent<ObjectiveHandler>() != null){
-            ObjectiveHandler objectiveHandler = obj.GetComponent<ObjectiveHandler>();
-
-            List<GameObject> kill_list_obj = objectiveHandler.getObjective(ObjectiveHandler.ObjectiveType.entity_kills);
-            foreach(GameObject go in kill_list_obj){
-                if(tag == go.GetComponent<ObjectiveKill>().tag){
-                    go.GetComponent<ObjectiveKill>().increaseProgressByOne();
-                }
-            }
-        }
         hasDied = true;
         if(GetComponent<Zombie>() != null) return;
         foreach (Rigidbody rb in rigidbodies)
