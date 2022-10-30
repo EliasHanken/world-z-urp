@@ -263,7 +263,7 @@ public class Zombie : MonoBehaviour
     {
         if (_animator.GetCurrentAnimatorStateInfo(0).IsName(_standUpStateName) == false)
         {
-            _currentState = ZombieState.Walking;
+            _currentState = ZombieState.Running;
         }
     }
 
