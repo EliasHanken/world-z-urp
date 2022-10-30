@@ -148,7 +148,7 @@ public class Zombie : MonoBehaviour
 
     private IEnumerator rotateZombieRandom(){
         while(true){
-            int wait_time = Random.Range(5,15);
+            int wait_time = Random.Range(5,10);
             yield return new WaitForSeconds(wait_time);
             if(_currentState == ZombieState.Idle){
                 _animator.SetTrigger("turn");
@@ -192,12 +192,27 @@ public class Zombie : MonoBehaviour
     private void RunningBehaviour()
     {
         bool containsPlayer = false;
+        GameObject player = null;
         foreach(Collider collider in Physics.OverlapSphere(transform.position,eyeSightLength)){
             if(collider.tag == "Player"){
                 containsPlayer = true;
+                player = collider.gameObject;
             }
         }
-        if(!containsPlayer){
+        if(containsPlayer){
+            RaycastHit hit;
+            if(Physics.Raycast(eyeSight.position,eyeSight.forward,out hit,eyeSightLength)){
+                if(hit.collider.tag != "Player"){
+                    _currentState = ZombieState.Idle;
+                    return;
+                }
+            }
+            if(Vector3.Distance(player.transform.position,transform.position) <= 2.4f){
+                _animator.SetBool("attack",true);
+            }else{
+                _animator.SetBool("attack",false);
+            }
+        }else{
             _currentState = ZombieState.Idle;
             return;
         }
@@ -207,7 +222,7 @@ public class Zombie : MonoBehaviour
         direction.Normalize();
 
         Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 360 * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 260 * Time.deltaTime);
         
         _animator.SetBool("run",true);
 
