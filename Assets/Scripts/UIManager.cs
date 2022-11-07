@@ -7,7 +7,7 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] 
     private KeyCode pauseButton;
-    private Canvas canvas;
+    public Canvas canvas;
     public Slider volumeSlider;
 
     private bool _pause = false;
@@ -15,7 +15,10 @@ public class UIManager : MonoBehaviour
     void Awake()
     {
         fixedDeltaTime = Time.fixedDeltaTime;
-        canvas = GetComponentInChildren<Canvas>();
+        if(canvas == null){
+            canvas = GetComponentInChildren<Canvas>();
+        }
+        
     }
 
     void Update()
