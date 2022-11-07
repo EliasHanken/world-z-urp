@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: b643d7aa2f33bc24e80934d17b416249
 ModelImporter:
-  serializedVersion: 22101
+  serializedVersion: 22103
   internalIDToNameTable:
   - first:
       74: -203655887218126122
@@ -208,11 +208,11 @@ ModelImporter:
     - boneName: mixamorig:Neck
       humanName: Neck
       limit:
-        min: {x: 0, y: 0, z: 0}
-        max: {x: 0, y: 0, z: 0}
+        min: {x: -80.52357, y: -6.0732975, z: -4.269601}
+        max: {x: 71.09948, y: 6.073305, z: 10.835442}
         value: {x: 0, y: 0, z: 0}
         length: 0
-        modified: 0
+        modified: 1
     - boneName: mixamorig:Head
       humanName: Head
       limit:
@@ -954,6 +954,8 @@ ModelImporter:
   humanoidOversampling: 1
   avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
   additionalBone: 0
   userData: 
   assetBundleName: 

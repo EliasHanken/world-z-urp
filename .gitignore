@@ -12,6 +12,7 @@
 [Uu]serSettings/
 
 Assets/Models/Zombie_Igor/source/Zombie_Igor.fbx
+Assets/Models/Gas_Mask_Police/Gas_Mask_Police.fbx
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta

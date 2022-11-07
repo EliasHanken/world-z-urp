@@ -1,9 +1,10 @@
 using UnityEngine;
 using System.Collections;
-
+using System.Collections.Generic;
 
 public class Zombie : MonoBehaviour
 {
+    public AudioSource audioSource;
     private class BoneTransform
     {
         public Vector3 Position { get; set; }
@@ -51,6 +52,7 @@ public class Zombie : MonoBehaviour
     public bool isDead = false;
     public float eyeSightLength = 5f;
     public Transform eyeSight;
+    public List<Transform> eyeSights;
 
     void Awake()
     {
@@ -74,6 +76,8 @@ public class Zombie : MonoBehaviour
         DisableRagdoll();
 
         StartCoroutine(rotateZombieRandom());
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -103,15 +107,21 @@ public class Zombie : MonoBehaviour
                 _animator.SetBool("run",false);
                 _animator.SetBool("idle",true);
                 _animator.SetBool("walk",false);
+                audioSource.enabled = true;
                 RaycastHit hit;
-                if(Physics.Raycast(eyeSight.position,eyeSight.forward,out hit,eyeSightLength)){
-                    if(hit.collider.tag == "Player"){
-                        _currentState = ZombieState.Running;
+                foreach(Transform eye in eyeSights){
+                    if(Physics.Raycast(eye.position,eye.forward,out hit,eyeSightLength)){
+                        if(hit.collider.tag == "Player"){
+                            _currentState = ZombieState.Running;
+                        }
                     }
                 }
                 break;
             }
-        Debug.DrawRay(eyeSight.position,eyeSight.forward * eyeSightLength,Color.red);
+        foreach(Transform eye in eyeSights){
+            Debug.DrawRay(eye.position,eye.forward * eyeSightLength,Color.red);
+        }
+        
     }
 
     public void TriggerRagdoll(Vector3 force, Vector3 hitPoint)
@@ -156,6 +166,11 @@ public class Zombie : MonoBehaviour
             
         }
     }
+
+    public void rotateZombie()
+    {
+         _animator.SetTrigger("turn");
+    }
       
     public void DisableRagdoll()
     {
@@ -189,7 +204,7 @@ public class Zombie : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 360 * Time.deltaTime);
     }
 
-    private void RunningBehaviour()
+    public void ZombieAttackEvent()
     {
         bool containsPlayer = false;
         GameObject player = null;
@@ -199,7 +214,28 @@ public class Zombie : MonoBehaviour
                 player = collider.gameObject;
             }
         }
+
         if(containsPlayer){
+            if(Vector3.Distance(player.transform.position,transform.position) <= 3f){
+                player.GetComponent<EntityHealth>().TakeDamage(2,false);
+            }
+            
+        }
+    }
+
+    private void RunningBehaviour()
+    {
+        audioSource.enabled = true;
+        bool containsPlayer = false;
+        GameObject player = null;
+        foreach(Collider collider in Physics.OverlapSphere(transform.position,eyeSightLength)){
+            if(collider.tag == "Player"){
+                containsPlayer = true;
+                player = collider.gameObject;
+            }
+        }
+        if(containsPlayer){
+            
             RaycastHit hit;
             if(Physics.Raycast(eyeSight.position,eyeSight.forward,out hit,eyeSightLength)){
                 if(hit.collider.tag != "Player"){
@@ -232,6 +268,7 @@ public class Zombie : MonoBehaviour
 
     private void RagdollBehaviour()
     {
+        audioSource.enabled = false;
         if(_reborn){
             isDead = true;
             _currentState = ZombieState.Dead;
@@ -256,6 +293,7 @@ public class Zombie : MonoBehaviour
 
     private void DeadBehaviour()
     {
+        audioSource.enabled = false;
         EnableRagdoll();
     }
 

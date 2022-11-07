@@ -52,7 +52,7 @@ public class DynamicCrosshair : MonoBehaviour
                     tooltip.text = hit.collider.GetComponentInParent<EnemyAi>().enemyName;
                     tooltip.color = cc;
                 }
-            }if(hit.collider.GetComponentInParent<Zombie>() != null){
+            }else if(hit.collider.GetComponentInParent<Zombie>() != null){
                 foreach(Image img in reticle.GetComponentsInChildren<Image>()){
                     Color cc = img.color;
                     cc.r = enemyTarget.r;
@@ -64,8 +64,19 @@ public class DynamicCrosshair : MonoBehaviour
                     tooltip.text = "Zombie";
                     tooltip.color = cc;
                 }
-            }
-            else{
+            }else if(hit.collider.tag == "NPC"){
+                foreach(Image img in reticle.GetComponentsInChildren<Image>()){
+                    Color cc = img.color;
+                    cc.r = friendlyTarget.r;
+                    cc.g = friendlyTarget.g;
+                    cc.b = friendlyTarget.b;
+
+                    img.color = cc;
+
+                    tooltip.text = "Sgt. Nils";
+                    tooltip.color = cc;
+                }
+            }else{
                 foreach(Image img in reticle.GetComponentsInChildren<Image>()){
                     Color cc = img.color;
                     cc.r = defaultTarget.r;

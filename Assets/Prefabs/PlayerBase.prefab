@@ -48,7 +48,7 @@ MonoBehaviour:
   Camera: {fileID: 4716666903313972316}
   motionBob:
     HorizontalBobRange: 0
-    VerticalBobRange: 0.08
+    VerticalBobRange: 0.05
     Bobcurve:
       serializedVersion: 2
       m_Curve:
@@ -100,13 +100,13 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    VerticaltoHorizontalRatio: 5.5
+    VerticaltoHorizontalRatio: 0.3
   jumpAndLandingBob:
     BobDuration: 0.15
     BobAmount: 0.3
   rb: {fileID: 4716666903293583214}
   playerMovement: {fileID: 4716666903293583213}
-  StrideInterval: 0.3
+  StrideInterval: 100
   RunningStrideLengthen: 1
 --- !u!1 &4716666903293583202
 GameObject:
@@ -128,6 +128,7 @@ GameObject:
   - component: {fileID: 5222297311716197408}
   - component: {fileID: 5222297311716197417}
   - component: {fileID: 2026110611}
+  - component: {fileID: 6859543301402336273}
   m_Layer: 0
   m_Name: PlayerBase
   m_TagString: Player
@@ -150,7 +151,7 @@ Transform:
   - {fileID: 353956984438000712}
   - {fileID: 2419677815623409565}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &4716666903293583203
 CapsuleCollider:
@@ -531,6 +532,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6859543301402336273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4716666903293583202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca35a4fe1184cd14d80fa681f23acef0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graphicSettingPreset: 0
+  Sensitivity: 0
+  Volume: 0
 --- !u!1 &8500262412976229073
 GameObject:
   m_ObjectHideFlags: 0

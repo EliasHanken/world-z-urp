@@ -113,6 +113,7 @@ public class Gun : MonoBehaviour
     }
 
     void Shoot(){
+        if(GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().isPaused()) return;
         PlayerMovement pm = gameObject.GetComponentInParent<PlayerMovement>();
         if(pm != null){
             if(pm.isJumping){
@@ -174,6 +175,7 @@ public class Gun : MonoBehaviour
 
             Zombie zombie = hit.transform.GetComponentInParent<Zombie>();
             if(zombie != null){
+                
                 Vector3 forceDirection = zombie.transform.position - fpsCam.transform.position;
                 forceDirection.y = 0.25f;
                 forceDirection.Normalize();
@@ -182,6 +184,7 @@ public class Gun : MonoBehaviour
 
                 if(entityHealth.health > 0){
                     //fastToggleRagdoll(zombie,force/30,hit.point);
+                    //zombie.TriggerShot();
                 }
             
                 if(entityHealth.health <= 0){
@@ -194,7 +197,10 @@ public class Gun : MonoBehaviour
 
                             List<GameObject> kill_list_obj = objectiveHandler.getObjective(ObjectiveHandler.ObjectiveType.entity_kills);
                                 foreach(GameObject go in kill_list_obj){
-                                go.GetComponent<ObjectiveKill>().increaseProgressByOne();
+                                    if(go.GetComponent<ObjectiveKill>() != null){
+                                        go.GetComponent<ObjectiveKill>().increaseProgressByOne();
+                                    }
+                                    
                             }
                         }
                     }else{

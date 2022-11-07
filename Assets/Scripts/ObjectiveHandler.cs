@@ -6,7 +6,8 @@ public class ObjectiveHandler : MonoBehaviour
 {
     public enum ObjectiveType{
         entity_kills,
-        target_kill
+        target_kill,
+        interactable
     }
     [SerializeField]private List<GameObject> objectiveList;
     public List<GameObject> instantiatedObj;
@@ -29,6 +30,12 @@ public class ObjectiveHandler : MonoBehaviour
                     StartCoroutine(destroyObjective(obj));
                 }
             }
+            if(obj.GetComponent<ObjectiveInteract>() != null){
+                ObjectiveInteract objectiveInteract = obj.GetComponent<ObjectiveInteract>();
+                if(objectiveInteract.status == Objective.Status.Passed){
+                    StartCoroutine(destroyObjective(obj));
+                }
+            }
         }
     }
 
@@ -36,7 +43,8 @@ public class ObjectiveHandler : MonoBehaviour
         bool destroyed = false;
         while(!destroyed){
             yield return new WaitForSeconds(2);
-            Destroy(gameObject);
+            instantiatedObj.Remove(objective);
+            Destroy(objective);
             destroyed = true;
         }
     }
@@ -46,6 +54,13 @@ public class ObjectiveHandler : MonoBehaviour
         if(type == ObjectiveType.entity_kills){
             foreach(GameObject obj in instantiatedObj){
                 if(obj.GetComponent<ObjectiveKill>() != null){
+                    list.Add(obj);
+                }
+            }
+        }
+        else if(type == ObjectiveType.interactable){
+            foreach(GameObject obj in instantiatedObj){
+                if(obj.GetComponent<ObjectiveInteract>() != null){
                     list.Add(obj);
                 }
             }
