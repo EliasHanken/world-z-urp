@@ -1672,7 +1672,7 @@ Transform:
   - {fileID: 7943954628089633373}
   - {fileID: 2444171119927573893}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: -189.04, z: 0}
 --- !u!95 &8398904054677889203
 Animator:
@@ -1746,6 +1746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e9f906b61d43b4090daa187574f864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   _camera: {fileID: 0}
   _standUpStateName: Stand Up
   _standUpClipName: Stand Up
@@ -2306,7 +2307,7 @@ GameObject:
   - component: {fileID: 2730433807381865442}
   m_Layer: 7
   m_Name: mixamorig:Head
-  m_TagString: Untagged
+  m_TagString: EntityHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

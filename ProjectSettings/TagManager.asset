@@ -7,6 +7,13 @@ TagManager:
   - EntityHead
   - Weapon
   - Fire
+  - UIManager
+  - Zombie
+  - ObjectiveHandler
+  - RadarBlip
+  - NPC
+  - Objective
+  - CrosshairManager
   layers:
   - Default
   - TransparentFX

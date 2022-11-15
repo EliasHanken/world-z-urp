@@ -6,7 +6,7 @@ using TMPro;
 
 public class DynamicCrosshair : MonoBehaviour
 {
-    private RectTransform reticle;
+    public RectTransform reticle;
     public float restingSize;
     public float maxSize;
     public float changeSpeed;

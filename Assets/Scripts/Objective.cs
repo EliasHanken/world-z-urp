@@ -13,6 +13,7 @@ public abstract class Objective : MonoBehaviour
         Ongoing,
         Passed
     }
+    
     public Status status = Status.Inactive;
     public abstract void setStatus(Status status);
 }

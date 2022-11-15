@@ -33,10 +33,26 @@ public class UIManager : MonoBehaviour
 
         if(_pause){
             Time.timeScale = 0.1f;
-            AudioListener.volume = 0.0f;
+            foreach(GameObject go in GameObject.FindGameObjectsWithTag("Zombie")){
+                AudioSource audioSource = go.GetComponent<AudioSource>();
+                audioSource.volume = 0.0f;
+            }
+            foreach(GameObject go in GameObject.FindGameObjectsWithTag("EnvironmentSounds")){
+                AudioSource audioSource = go.GetComponent<AudioSource>();
+                audioSource.volume = 0.0f;
+            }
+            //AudioListener.volume = 1f;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None; 
         }else{
+            foreach(GameObject go in GameObject.FindGameObjectsWithTag("Zombie")){
+                AudioSource audioSource = go.GetComponent<AudioSource>();
+                audioSource.volume = 1f;
+            }
+            foreach(GameObject go in GameObject.FindGameObjectsWithTag("EnvironmentSounds")){
+                AudioSource audioSource = go.GetComponent<AudioSource>();
+                audioSource.volume = 1f;
+            }
             Time.timeScale = 1f;
             Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
             Cursor.visible = false;
