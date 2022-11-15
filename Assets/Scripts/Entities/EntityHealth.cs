@@ -22,6 +22,11 @@ public class EntityHealth : MonoBehaviour
     Rigidbody[] rigidbodies;
     Collider[] colliders;
 
+    private float currentVelocity;
+    private Color currentColor;
+
+
+
     void Start(){
         if(isPlayer){
             Color tempColor = damageOverlay.color;
@@ -56,10 +61,16 @@ public class EntityHealth : MonoBehaviour
                 {
                     Die();
                 }
+            }else{
+                float currentValue = Mathf.SmoothDamp(healthBar.value, 0,ref currentVelocity, 20*Time.deltaTime);
+                healthBar.value = currentValue;
+                PlayerDie();
             }
+            
         }
         if(isPlayer){
-            healthBar.value = health;
+            float currentValue = Mathf.SmoothDamp(healthBar.value, health,ref currentVelocity, 20*Time.deltaTime);
+            healthBar.value = currentValue;
         }
     }
 
@@ -78,6 +89,32 @@ public class EntityHealth : MonoBehaviour
         {
             Destroy(item);
         }
+    }
+
+    private void PlayerDie(){
+        if(GameObject.FindGameObjectWithTag("GameManager") == null) return;
+        GameObject.FindGameObjectWithTag("GameManager").SetActive(false);
+        //GameObject.FindGameObjectWithTag("Player").transform.Find("WeaponRenderer").GetComponent<Camera>().enabled = false;
+        GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().playerDead = true;
+        GameObject.FindGameObjectWithTag("UIManager").transform.Find("DeathScreen").gameObject.SetActive(true);
+
+        // Pause Menu effects
+        Time.timeScale = 0.1f;
+        foreach(GameObject go in GameObject.FindGameObjectsWithTag("Zombie")){
+            AudioSource audioSource = go.GetComponent<AudioSource>();
+            audioSource.volume = 0.0f;
+        }
+        foreach(GameObject go in GameObject.FindGameObjectsWithTag("EnvironmentSounds")){
+            AudioSource audioSource = go.GetComponent<AudioSource>();
+            audioSource.volume = 0.0f;
+        }
+        foreach(GameObject go in GameObject.FindGameObjectsWithTag("Player")){
+                AudioSource audioSource = go.GetComponent<AudioSource>();
+                audioSource.volume = 0.0f;
+            }
+        //AudioListener.volume = 1f;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None; 
     }
 
     IEnumerator KillEntity(){

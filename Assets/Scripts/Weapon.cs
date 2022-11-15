@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Weapon : MonoBehaviour
 {
@@ -72,6 +73,8 @@ public class Weapon : MonoBehaviour
     public AudioClip soundClipInsert;
     [SerializeField]
     public AudioClip soundClipReload;
+    [SerializeField]
+    public AudioClip soundClipNoAmmoShoot;
 
     // Private local stuff
 
@@ -86,11 +89,16 @@ public class Weapon : MonoBehaviour
 
     private ProceduralRecoil proceduralRecoil;
 
+    private TextMeshProUGUI ammoGui;
+
+    private float _currentCHairAlpha = 255f;
     
 
     void Start()
     {
         _sens = GetComponentInParent<CameraController>().mouseSensitivity;
+
+        ammoGui = GameObject.FindGameObjectWithTag("AmmoHud").GetComponent<TextMeshProUGUI>();
 
         currentAmmo = defaultAmmoSpare;
         currentAmmoInMagazine = clipSize;
@@ -109,10 +117,18 @@ public class Weapon : MonoBehaviour
 
     void Update()
     {
+        if(GameObject.FindGameObjectWithTag("GameManager") == null) return;
+        // Update hud
+        ammoGui.text = currentAmmoInMagazine + "|" + currentAmmo;
+        if(animator.GetCurrentAnimatorStateInfo(0).IsName("Arm")){
+            return;
+        }
         if(Input.GetKeyDown(KeyCode.R)){
             Reload();
         }
+        
         if(Input.GetKey(KeyCode.Mouse1)){
+            if(animator.GetBool("Reload"))return; // Return if reload so player can't ads at the same time
             adsRecoil();
             Vector3 newPos = Vector3.Lerp(transformHolder.localPosition,staticAdsPos,10 * Time.deltaTime);
             transformHolder.localPosition = newPos;
@@ -120,14 +136,13 @@ public class Weapon : MonoBehaviour
             
             DynamicCrosshair dynamicCrosshair = GameObject.FindGameObjectWithTag("CrosshairManager").GetComponent<DynamicCrosshair>();
             if(dynamicCrosshair != null){
-                foreach(Image img in dynamicCrosshair.reticle.GetComponentsInChildren<Image>()){
-                    //Color cc = img.color;
-                    //float alphaLerp = Mathf.Lerp(cc.a,255,10 * Time.deltaTime);
-                    //cc.a = alphaLerp;
-                    //img.color = cc;
-
-                    img.enabled = false;
-                }
+                _currentCHairAlpha = Mathf.Lerp(_currentCHairAlpha,0,40 * Time.deltaTime);
+                foreach(Image img in dynamicCrosshair.GetComponentsInChildren<Image>()){
+                    Color cc = img.color;
+                    
+                    cc.a = _currentCHairAlpha;
+                    img.color = cc;
+                }    
             }
             
         }else{
@@ -135,17 +150,16 @@ public class Weapon : MonoBehaviour
             Vector3 newPos = Vector3.Lerp(transformHolder.localPosition,staticDefaultPos,10 * Time.deltaTime);
             transformHolder.localPosition = newPos;
 
-            
+    
             DynamicCrosshair dynamicCrosshair = GameObject.FindGameObjectWithTag("CrosshairManager").GetComponent<DynamicCrosshair>();
             if(dynamicCrosshair != null){
-                foreach(Image img in dynamicCrosshair.reticle.GetComponentsInChildren<Image>()){
-                    //Color cc = img.color;
-                    //float alphaLerp = Mathf.Lerp(cc.a,255,10 * Time.deltaTime);
-                    //cc.a = alphaLerp;
-                    //img.color = cc;
-
-                    img.enabled = true;
-                }
+                _currentCHairAlpha = Mathf.Lerp(_currentCHairAlpha,255,40 * Time.deltaTime);
+                foreach(Image img in dynamicCrosshair.GetComponentsInChildren<Image>()){
+                    Color cc = img.color;
+                    
+                    cc.a = _currentCHairAlpha;
+                    img.color = cc;
+                }  
             }
             
         }
@@ -211,6 +225,8 @@ public class Weapon : MonoBehaviour
         if(GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().isPaused()) return;
         // Check if ammo is 0.
         if(currentAmmoInMagazine <= 0){
+            GetComponent<AudioSource>().PlayOneShot(soundClipNoAmmoShoot);
+            _fireCooldown = true;
             return;
         }
 
@@ -231,7 +247,13 @@ public class Weapon : MonoBehaviour
         StartCoroutine(waitAndDestroyMuzzleFlash(fireEffect));
 
         RaycastHit hit;
-        if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 300))
+        int layerMask = 1 << 9;
+
+        // This would cast rays only against colliders in layer 8.
+        // But instead we want to collide against everything except layer 8. The ~ operator does this, it inverts a bitmask.
+        layerMask = ~layerMask;
+
+        if(Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, 300,layerMask,QueryTriggerInteraction.Ignore))
         {
             EntityHealth entityHealth = hit.transform.GetComponentInParent<EntityHealth>();
             if(entityHealth != null)

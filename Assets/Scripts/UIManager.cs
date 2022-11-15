@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
     private KeyCode pauseButton;
     public Canvas canvas;
     public Slider volumeSlider;
+    public bool playerDead = false;
 
     private bool _pause = false;
     private float fixedDeltaTime;
@@ -41,15 +42,24 @@ public class UIManager : MonoBehaviour
                 AudioSource audioSource = go.GetComponent<AudioSource>();
                 audioSource.volume = 0.0f;
             }
+            foreach(GameObject go in GameObject.FindGameObjectsWithTag("Player")){
+                AudioSource audioSource = go.GetComponent<AudioSource>();
+                audioSource.volume = 0.0f;
+            }
             //AudioListener.volume = 1f;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None; 
         }else{
+            if(playerDead)return;
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("Zombie")){
                 AudioSource audioSource = go.GetComponent<AudioSource>();
                 audioSource.volume = 1f;
             }
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("EnvironmentSounds")){
+                AudioSource audioSource = go.GetComponent<AudioSource>();
+                audioSource.volume = 1f;
+            }
+            foreach(GameObject go in GameObject.FindGameObjectsWithTag("Player")){
                 AudioSource audioSource = go.GetComponent<AudioSource>();
                 audioSource.volume = 1f;
             }

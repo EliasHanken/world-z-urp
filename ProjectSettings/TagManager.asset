@@ -14,6 +14,8 @@ TagManager:
   - NPC
   - Objective
   - CrosshairManager
+  - EnvironmentSounds
+  - AmmoHud
   layers:
   - Default
   - TransparentFX
@@ -25,8 +27,8 @@ TagManager:
   - Interactable
   - NoCollision
   - Radar
-  - 
-  - 
+  - Player
+  - Obstruction
   - 
   - 
   - 

@@ -624,7 +624,7 @@ Transform:
   - {fileID: 875225571867691581}
   - {fileID: 8780291018598513520}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6809607127447212450
 MonoBehaviour:
@@ -640,7 +640,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 1, g: 1, b: 1, a: 1}
-  outlineWidth: 1.25
+  outlineWidth: 1.5
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
@@ -656,9 +656,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e299b1e5f0e6b1f429061d223f663c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptMessage: Pickup ammo x20
+  promptMessage: Pickup ammo
   isLooking: 0
+  whoIsLooking: {fileID: 0}
   playerHandContainer: {fileID: 0}
+  amount: 50
   rotateSpeed: 60
   floatFrequency: 0.7
   floatAmplitude: 0.1
@@ -674,8 +676,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.32, y: 0.22, z: 0.14}
+  m_Center: {x: 0, y: 0.09, z: 0}
 --- !u!1 &7074961586415677372
 GameObject:
   m_ObjectHideFlags: 0
