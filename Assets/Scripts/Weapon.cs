@@ -209,8 +209,14 @@ public class Weapon : MonoBehaviour
             
         }else{
             int ammoNeeded = clipSize - currentAmmoInMagazine;
-            currentAmmo -= ammoNeeded;
-            currentAmmoInMagazine += ammoNeeded;
+            if(currentAmmo >= ammoNeeded){
+                currentAmmo -= ammoNeeded;
+                currentAmmoInMagazine += ammoNeeded;
+            }else{
+                currentAmmoInMagazine += currentAmmo;
+                currentAmmo = 0;
+            }
+            
         }
     }
 
