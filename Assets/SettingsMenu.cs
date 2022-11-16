@@ -13,6 +13,15 @@ public class SettingsMenu : MonoBehaviour
     public TMP_Dropdown resolutionDropdown;
     public TMP_Dropdown qualityDropdown;
     public TMP_Dropdown maxFPSDropdown;
+    public Slider volumeSFX;
+    public Slider volumeMaster;
+    public Slider volumeMusic;
+    public Slider sensitivitySlider;
+    public Slider adsSlider;
+
+    // private fields
+    private float _sens;
+    private float _ads;
 
     void Start(){
         resolutions = Screen.resolutions;
@@ -45,6 +54,14 @@ public class SettingsMenu : MonoBehaviour
         }
         SetMaxFps(4);
         maxFPSDropdown.RefreshShownValue();
+
+        sensitivitySlider.value = 500f;
+        adsSlider.value = 0.7f;
+
+        if(SaveSystem.LoadSettingsData() != null){
+            LoadSettings();
+        }
+
     }
 
     public void SetResolution(int resolutionIndex){
@@ -57,6 +74,14 @@ public class SettingsMenu : MonoBehaviour
             dbVolume = -80.0f;
         }
         audioMixer.SetFloat("volumeMusic", dbVolume);
+    }
+
+    public float getCorrectDBValue(float volume){
+        float dbVolume = Mathf.Log10(volume) * 20;
+        if (volume == 0.0f){
+            dbVolume = -80.0f;
+        }
+        return dbVolume;
     }
     public void SetVolumeSFX(float volume){
         float dbVolume = Mathf.Log10(volume) * 20;
@@ -88,5 +113,54 @@ public class SettingsMenu : MonoBehaviour
             Application.targetFrameRate = maxFps * 60;
         }
         
+    }
+
+    public void SetSens(float sens){
+        this._sens = sens;
+    }
+
+    public void SetAds(float ads){
+        this._ads = ads;
+    }
+
+    public void SaveSettings(){
+        SettingsData settingsData = new SettingsData(_ads,_sens,
+            volumeSFX.value,volumeMaster.value,volumeMusic.value,
+            resolutionDropdown.value,
+            qualityDropdown.value,
+            maxFPSDropdown.value
+        );
+        SaveSystem.SaveSettings(settingsData);
+    }
+
+    public void LoadSettings(){
+        SettingsData settingsData = SaveSystem.LoadSettingsData();
+
+            // Set dropdowns
+            resolutionDropdown.value = settingsData.resolutionIndex;
+            resolutionDropdown.RefreshShownValue();
+            SetResolution(settingsData.resolutionIndex);
+
+            qualityDropdown.value = settingsData.qualityPresetIndex;
+            qualityDropdown.RefreshShownValue();
+            SetQuality(settingsData.qualityPresetIndex);
+
+            maxFPSDropdown.value = settingsData.maxFPSIndex;
+            maxFPSDropdown.RefreshShownValue();
+            SetMaxFps(settingsData.maxFPSIndex);
+
+            SetVolumeMaster(settingsData.volumeMaster);
+            SetVolumeMusic(settingsData.volumeMusic);
+            SetVolumeSFX(settingsData.volumeSFX);
+
+            volumeSFX.value = settingsData.volumeSFX;
+            volumeMaster.value = settingsData.volumeMaster;
+            volumeMusic.value = settingsData.volumeMusic;
+
+            _sens = settingsData.sensitivity;
+            sensitivitySlider.value = settingsData.sensitivity;
+
+            _ads = settingsData.adsMultiplier;
+            adsSlider.value = settingsData.adsMultiplier;
     }
 }

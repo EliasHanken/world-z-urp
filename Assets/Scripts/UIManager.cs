@@ -8,7 +8,8 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] 
     private KeyCode pauseButton;
-    public Canvas canvas;
+    public GameObject pauseObject;
+    public GameObject copyright;
     public Slider volumeSlider;
     public bool playerDead = false;
     public string scene_level_name;
@@ -18,24 +19,20 @@ public class UIManager : MonoBehaviour
     void Awake()
     {
         fixedDeltaTime = Time.fixedDeltaTime;
-        if(canvas == null){
-            canvas = GetComponentInChildren<Canvas>();
-        }
-        
     }
 
     void Update()
     {
         if(Input.GetKeyDown(pauseButton))
         {
+            if(!pauseObject.activeInHierarchy)return;
             Debug.Log("Pause pressed");
             _pause = !_pause;
+            pauseObject.SetActive(_pause);
+            copyright.SetActive(_pause);
         }
-
-        canvas.gameObject.SetActive(_pause);
-
         if(_pause){
-            Time.timeScale = 0.1f;
+            Time.timeScale = 0.0f;
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("Zombie")){
                 AudioSource audioSource = go.GetComponent<AudioSource>();
                 audioSource.volume = 0.0f;
@@ -69,12 +66,12 @@ public class UIManager : MonoBehaviour
             Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked; 
-            AudioListener.volume = volumeSlider.value;
+            //AudioListener.volume = volumeSlider.value;
         }
 
-        if(volumeSlider.value < 0.01){
-            AudioListener.volume = 0.0f;
-        }
+        //if(volumeSlider.value < 0.01){
+        //    AudioListener.volume = 0.0f;
+        //}
     }
 
     public bool isPaused()
