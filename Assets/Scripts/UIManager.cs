@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -10,6 +11,7 @@ public class UIManager : MonoBehaviour
     public Canvas canvas;
     public Slider volumeSlider;
     public bool playerDead = false;
+    public string scene_level_name;
 
     private bool _pause = false;
     private float fixedDeltaTime;
@@ -78,5 +80,13 @@ public class UIManager : MonoBehaviour
     public bool isPaused()
     {
         return _pause;
+    }
+
+    public void restartScene(){
+        SceneManager.LoadScene(scene_level_name);
+    }
+
+    public void loadScene(string name){
+        SceneManager.LoadScene(name);
     }
 }

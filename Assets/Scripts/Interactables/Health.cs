@@ -38,7 +38,7 @@ public class Health : Interactable
     protected override void Interact()
     {
         if(whoIsLooking.GetComponentInChildren<EntityHealth>() != null){
-            whoIsLooking.GetComponentInChildren<EntityHealth>().health += amount;
+            whoIsLooking.GetComponentInChildren<EntityHealth>().giveHealth(amount);
             Destroy(gameObject);
         }
         

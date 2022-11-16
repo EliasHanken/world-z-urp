@@ -72,6 +72,17 @@ public class EntityHealth : MonoBehaviour
             float currentValue = Mathf.SmoothDamp(healthBar.value, health,ref currentVelocity, 20*Time.deltaTime);
             healthBar.value = currentValue;
         }
+
+        
+    }
+
+    public void giveHealth(int _health){
+        health += _health;
+        float alpha = Mathf.Abs((health/20)-1);
+            //Debug.Log(alpha);
+            //current.a = alpha;
+            //damageOverlay.color = current;
+        StartCoroutine(instantiateHealOverlay(alpha,0.5f));
     }
 
     private void Die()
@@ -169,6 +180,19 @@ public class EntityHealth : MonoBehaviour
         Color currentColor = damageOverlay.color;
         Color newColor = damageOverlay.color;
         newColor.a = newAlpha;
+        float t = 0f;
+        while(t < time){
+            t += Time.deltaTime / time;
+            damageOverlay.color = Color.Lerp(currentColor,newColor,t);
+            yield return null;
+        }
+    }
+
+    public IEnumerator instantiateHealOverlay(float newAlpha,float time){
+        float currentAlpha = damageOverlay.color.a;
+        Color currentColor = damageOverlay.color;
+        Color newColor = damageOverlay.color;
+        newColor.a = 0;
         float t = 0f;
         while(t < time){
             t += Time.deltaTime / time;

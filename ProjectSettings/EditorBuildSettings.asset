@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/Scenes/Menus/MainMenu.unity
+    guid: 5e9c9fc3a1435d84dac0f70f8778931a
+  - enabled: 1
+    path: Assets/Scenes/Missions/mission_snowstorm/Mission_1_Snowstorm.unity
+    guid: 7cc54825928dab3488b99125276de075
   m_configObjects: {}
