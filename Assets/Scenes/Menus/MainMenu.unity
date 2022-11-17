@@ -445,6 +445,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4568169401292284448, guid: 9936ca16242215840a755b239bc45c8e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4568169401292284460, guid: 9936ca16242215840a755b239bc45c8e, type: 3}
       propertyPath: m_Camera
       value: 
@@ -453,6 +457,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1922285363}
+    - target: {fileID: 4568169401674386686, guid: 9936ca16242215840a755b239bc45c8e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4568169401884517683, guid: 9936ca16242215840a755b239bc45c8e, type: 3}
       propertyPath: m_Name
       value: MainMenuUI
@@ -505,6 +513,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1922285363}
+    - target: {fileID: 4568169403054812102, guid: 9936ca16242215840a755b239bc45c8e, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4568169403300681202, guid: 9936ca16242215840a755b239bc45c8e, type: 3}
       propertyPath: m_Camera
       value: 

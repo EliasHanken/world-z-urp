@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 using TMPro;
 
@@ -10,6 +11,9 @@ public class Weapon : MonoBehaviour
         Pistol,Smg, Rifle, Sniper
     }
     private float _sens;
+    [Header("Audio Settings")]
+    [SerializeField]
+    private AudioMixerGroup audioMixerGroup;
 
     [Header("Dependent Objects")]
     [SerializeField]
@@ -277,12 +281,15 @@ public class Weapon : MonoBehaviour
                     if(headshotEffect != null)
                     {
                         GameObject instantiatedAS = new GameObject();
-                        AudioSource audioSource = instantiatedAS.AddComponent<AudioSource>();
+                        instantiatedAS.AddComponent<AudioSource>();
+                        AudioSource audioSource = instantiatedAS.GetComponent<AudioSource>();
+                        
                         audioSource.pitch = 0.8f;
-                        audioSource.volume = 0.9f;
                         audioSource.spatialBlend = 1.0f;
                         audioSource.transform.position = hit.transform.position;
-                        audioSource.PlayOneShot(headshotSound);
+                        audioSource.outputAudioMixerGroup = audioMixerGroup;
+                        audioSource.clip = headshotSound;
+                        audioSource.Play();
                         StartCoroutine(DestroyComponent(audioSource));
 
                         //ParticleSystem ps = Instantiate(headshotEffect, hit.point,Quaternion.LookRotation(hit.normal));
@@ -313,6 +320,7 @@ public class Weapon : MonoBehaviour
                 GameObject instantiatedAS = new GameObject();
                 AudioSource audioSource = instantiatedAS.AddComponent<AudioSource>();
                 audioSource.transform.position = hit.transform.position;
+                audioSource.outputAudioMixerGroup = audioMixerGroup;
                 audioSource.PlayOneShot(fleshHit);
                 StartCoroutine(DestroyComponent(audioSource));
 

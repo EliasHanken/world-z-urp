@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
     {
         if(Input.GetKeyDown(pauseButton))
         {
-            if(!pauseObject.activeInHierarchy)return;
+            if(_pause && !pauseObject.activeInHierarchy) return;
             Debug.Log("Pause pressed");
             _pause = !_pause;
             pauseObject.SetActive(_pause);
