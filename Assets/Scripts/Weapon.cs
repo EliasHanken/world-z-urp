@@ -14,6 +14,15 @@ public class Weapon : MonoBehaviour
     [Header("Audio Settings")]
     [SerializeField]
     private AudioMixerGroup audioMixerGroup;
+    [Header("Recoil Settings")]
+    [SerializeField]
+    private Vector3 recoilNoAds;
+    [SerializeField]
+    private Vector3 recoilNoAdsPreferences;
+    [SerializeField]
+    private Vector3 recoilAds;
+    [SerializeField]
+    private Vector3 recoilAdsPreferences;
 
     [Header("Dependent Objects")]
     [SerializeField]
@@ -133,6 +142,7 @@ public class Weapon : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.R)){
             Reload();
         }
+        
         
         if(Input.GetKey(KeyCode.Mouse1)){
             if(animator.GetBool("Reload"))return; // Return if reload so player can't ads at the same time
@@ -258,6 +268,8 @@ public class Weapon : MonoBehaviour
                 return;
             }
         }
+
+        animator.SetTrigger("Fire");
 
         currentAmmoInMagazine--;
 
@@ -412,6 +424,7 @@ public class Weapon : MonoBehaviour
     }
 
     void setRecoilFull(){
+        /*
         proceduralRecoil.recoilX = -10.7f;
         proceduralRecoil.recoilY = 5.5f;
         proceduralRecoil.recoilZ = 0.2f;
@@ -419,9 +432,18 @@ public class Weapon : MonoBehaviour
         proceduralRecoil.kickBackZ = 0.2f;
         proceduralRecoil.snappiness = 10.36f;
         proceduralRecoil.returnAmount = 20f;
+        */
+        proceduralRecoil.recoilX = recoilNoAds.x;
+        proceduralRecoil.recoilY = recoilNoAds.y;
+        proceduralRecoil.recoilZ = recoilNoAds.z;
+
+        proceduralRecoil.kickBackZ = recoilNoAdsPreferences.x;
+        proceduralRecoil.snappiness = recoilNoAdsPreferences.y;
+        proceduralRecoil.returnAmount = recoilNoAdsPreferences.z;
     }
 
     void adsRecoil(){
+        /*
         proceduralRecoil.recoilX = 1f;
         proceduralRecoil.recoilY = 1f;
         proceduralRecoil.recoilZ = 0.2f;
@@ -429,5 +451,13 @@ public class Weapon : MonoBehaviour
         proceduralRecoil.kickBackZ = 0.15f;
         proceduralRecoil.snappiness = 8f;
         proceduralRecoil.returnAmount = 15f;
+        */
+        proceduralRecoil.recoilX = recoilAds.x;
+        proceduralRecoil.recoilY = recoilAds.y;
+        proceduralRecoil.recoilZ = recoilAds.z;
+
+        proceduralRecoil.kickBackZ = recoilAdsPreferences.x;
+        proceduralRecoil.snappiness = recoilAdsPreferences.y;
+        proceduralRecoil.returnAmount = recoilAdsPreferences.z;
     }
 }

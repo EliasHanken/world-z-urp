@@ -66,11 +66,15 @@ public class InventoryManager : MonoBehaviour
             if(!melee.GetComponentInParent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle"))return;
             melee.GetComponentInParent<Animator>().SetBool("Unarm",true);
             melee.GetComponent<Weapon>().enabled = false;
+            melee.GetComponentInParent<WeaponAnimationEventHandler>().enabled = false;
+            melee.GetComponentInParent<ProceduralRecoil>().enabled = false;
 
             
             rifle.GetComponent<Weapon>().enabled = true;
             rifle.SetActive(true);
             rifleArmMesh.SetActive(true);
+            rifle.GetComponentInParent<ProceduralRecoil>().enabled = true;
+            rifle.GetComponentInParent<WeaponAnimationEventHandler>().enabled = true;
             rifle.GetComponentInParent<Animator>().SetBool("Unarm",false);
             rifle.GetComponentInParent<Animator>().SetBool("Arm",true);
             
@@ -78,11 +82,15 @@ public class InventoryManager : MonoBehaviour
             if(!rifle.GetComponentInParent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("Idle"))return;
             rifle.GetComponentInParent<Animator>().SetBool("Unarm",true);
             rifle.GetComponent<Weapon>().enabled = false;
+            rifle.GetComponentInParent<WeaponAnimationEventHandler>().enabled = false;
+            rifle.GetComponentInParent<ProceduralRecoil>().enabled = false;
 
             
             melee.GetComponent<Weapon>().enabled = true;
+            melee.GetComponentInParent<WeaponAnimationEventHandler>().enabled = true;
             melee.SetActive(true);
             meleeArmMesh.SetActive(true);
+            melee.GetComponentInParent<ProceduralRecoil>().enabled = true;
             melee.GetComponentInParent<Animator>().SetBool("Unarm",false);
             melee.GetComponentInParent<Animator>().SetBool("Arm",true);
             
