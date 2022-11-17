@@ -88,7 +88,12 @@ public class EntityHealth : MonoBehaviour
             //Debug.Log(alpha);
             //current.a = alpha;
             //damageOverlay.color = current;
-        StartCoroutine(instantiateHealOverlay(alpha,0.5f));
+        if(health >= maxHealth){
+            StartCoroutine(instantiateHealOverlay(0.0f,0.5f));
+        }else{
+            StartCoroutine(instantiateHealOverlay(alpha,0.5f));
+        }
+        
     }
 
     private void Die()

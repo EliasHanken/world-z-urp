@@ -160,7 +160,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 1
+        functionName: EventUnarmed
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: a1d7e23bb4d7041419cb5cc4a7210fde, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
@@ -194,6 +201,13 @@ ModelImporter:
         functionName: ClipReloadSound
         data: 
         objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: ArmFinished
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: a1d7e23bb4d7041419cb5cc4a7210fde, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -283,7 +297,7 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
-    optimizeBones: 1
+    optimizeBones: 0
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8

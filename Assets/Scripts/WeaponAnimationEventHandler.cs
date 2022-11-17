@@ -9,12 +9,20 @@ public class WeaponAnimationEventHandler : MonoBehaviour
     private AudioSource audioSource;
     void Start()
     {
-        weapon = GetComponentInChildren<Weapon>();
+        //weapon = GetComponentInChildren<Weapon>();
         audioSource = weapon.GetComponent<AudioSource>();
+    }
+
+    public void ArmFinished(){
+        weapon.ArmFinished();
     }
 
     public void WeaponReloadFinish(){
         weapon.WeaponReloadFinish();
+    }
+
+    public void EventUnarmed(){
+        weapon.EventUnarmed();
     }
 
     public void ClipTakeoutSound(){

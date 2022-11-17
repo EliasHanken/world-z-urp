@@ -124,7 +124,10 @@ public class Weapon : MonoBehaviour
         if(GameObject.FindGameObjectWithTag("GameManager") == null) return;
         // Update hud
         ammoGui.text = currentAmmoInMagazine + "|" + currentAmmo;
-        if(animator.GetCurrentAnimatorStateInfo(0).IsName("Arm")){
+        if(animator.GetCurrentAnimatorStateInfo(0).IsName("Arm") 
+        || animator.GetCurrentAnimatorStateInfo(0).IsName("Reload")
+        || animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")
+        || animator.GetCurrentAnimatorStateInfo(0).IsName("Unarm")){
             return;
         }
         if(Input.GetKeyDown(KeyCode.R)){
@@ -222,6 +225,15 @@ public class Weapon : MonoBehaviour
             }
             
         }
+    }
+
+    public void EventUnarmed(){
+        gameObject.SetActive(false);
+        transform.parent.Find("armmesh").gameObject.SetActive(false);
+    }
+
+    public void ArmFinished(){
+        animator.SetBool("Arm",false);
     }
 
     private void Reload(){
