@@ -11784,6 +11784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1d7e23bb4d7041419cb5cc4a7210fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixerGroup: {fileID: -8741449882071008781, guid: 901cbc0582ec5f34eb5d92930359791a, type: 2}
   fpsCam: {fileID: 1749478749}
   preset: 0
   fleshHit: {fileID: 8300000, guid: 0e7cfa3990115e640b4904c008098b74, type: 3}

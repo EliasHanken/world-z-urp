@@ -7,6 +7,7 @@ public class EntityHealth : MonoBehaviour
 {
     [SerializeField]
     public float health = 20f;
+    public float maxHealth = 20f;
     public bool isPlayer = false;
     public ParticleSystem deathEffect;
     public float deathTime = 3f;
@@ -77,7 +78,12 @@ public class EntityHealth : MonoBehaviour
     }
 
     public void giveHealth(int _health){
-        health += _health;
+        float healthNeed = maxHealth - health;
+        if(_health > healthNeed){
+            health += healthNeed;
+        }else{
+            health += _health;
+        }
         float alpha = Mathf.Abs((health/20)-1);
             //Debug.Log(alpha);
             //current.a = alpha;
