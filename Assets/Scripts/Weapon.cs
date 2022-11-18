@@ -255,6 +255,7 @@ public class Weapon : MonoBehaviour
     private void Shoot(){
         // Check if paused.
         if(GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().isPaused()) return;
+        if(GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>()._override) return;
         // Check if ammo is 0.
         if(currentAmmoInMagazine <= 0){
             GetComponent<AudioSource>().PlayOneShot(soundClipNoAmmoShoot);

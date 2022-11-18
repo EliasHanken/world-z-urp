@@ -11,6 +11,8 @@ public class ObjectiveHandler : MonoBehaviour
     }
     [SerializeField]private List<GameObject> objectiveList;
     public List<GameObject> instantiatedObj;
+    public GameObject missionComplete;
+    private bool pauseTriggered = false;
     void Start()
     {
         instantiatedObj = new List<GameObject>();
@@ -21,7 +23,13 @@ public class ObjectiveHandler : MonoBehaviour
         }
         objectiveList.Clear();
     }
+
+    void Update()
+    {
+        
+    }
     public void TriggerUpdate(){
+        
         foreach(GameObject obj in instantiatedObj){
             if(obj.GetComponent<ObjectiveKill>() != null){
                 ObjectiveKill objectiveKill = obj.GetComponent<ObjectiveKill>();
@@ -37,9 +45,33 @@ public class ObjectiveHandler : MonoBehaviour
                 }
             }
         }
+        
+        
     }
 
     IEnumerator destroyObjective(GameObject objective){
+        
+        if(instantiatedObj.Count == 1){
+            GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>()._override = true;
+            missionComplete.SetActive(true);
+                Time.timeScale = 0.1f;
+            foreach(GameObject go in GameObject.FindGameObjectsWithTag("Zombie")){
+                AudioSource audioSource = go.GetComponent<AudioSource>();
+                audioSource.volume = 0.0f;
+            }
+            foreach(GameObject go in GameObject.FindGameObjectsWithTag("EnvironmentSounds")){
+                AudioSource audioSource = go.GetComponent<AudioSource>();
+                audioSource.volume = 0.0f;
+            }
+            foreach(GameObject go in GameObject.FindGameObjectsWithTag("Player")){
+                AudioSource audioSource = go.GetComponent<AudioSource>();
+                audioSource.volume = 0.0f;
+            }
+            //AudioListener.volume = 1f;
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None; 
+            pauseTriggered = true;
+        }
         bool destroyed = false;
         while(!destroyed){
             yield return new WaitForSeconds(2);

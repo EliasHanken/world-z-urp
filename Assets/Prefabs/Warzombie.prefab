@@ -1726,6 +1726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
+  maxHealth: 20
   isPlayer: 0
   deathEffect: {fileID: 0}
   deathTime: 20
@@ -1747,7 +1748,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e9f906b61d43b4090daa187574f864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 6723714611657067473}
   _camera: {fileID: 0}
   _standUpStateName: Stand Up
   _standUpClipName: Stand Up

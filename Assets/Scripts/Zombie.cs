@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 
 public class Zombie : MonoBehaviour
 {
@@ -53,6 +54,8 @@ public class Zombie : MonoBehaviour
     public float eyeSightLength = 5f;
     public Transform eyeSight;
     public List<Transform> eyeSights;
+    public bool usingNavAgent;
+    public NavMeshAgent navMeshAgent;
 
     void Awake()
     {
@@ -78,6 +81,7 @@ public class Zombie : MonoBehaviour
         StartCoroutine(rotateZombieRandom());
 
         audioSource = GetComponent<AudioSource>();
+        _camera = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<Camera>();
     }
 
     // Update is called once per frame
@@ -104,6 +108,10 @@ public class Zombie : MonoBehaviour
                 DeadBehaviour();
                 break;
             case ZombieState.Idle:
+                if(usingNavAgent){
+                    navMeshAgent.destination = _camera.transform.position;
+                }
+                
                 _animator.SetBool("run",false);
                 _animator.SetBool("idle",true);
                 _animator.SetBool("walk",false);
@@ -261,12 +269,17 @@ public class Zombie : MonoBehaviour
             return;
         }
         
-        Vector3 direction = _camera.transform.position - transform.position;
-        direction.y = 0;
-        direction.Normalize();
+        if(!usingNavAgent){
+            Vector3 direction = _camera.transform.position - transform.position;
+            direction.y = 0;
+            direction.Normalize();
 
-        Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 260 * Time.deltaTime);
+            Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 260 * Time.deltaTime);
+        }else{
+            navMeshAgent.destination = player.transform.position;
+        }
+        
         
         _animator.SetBool("run",true);
 
