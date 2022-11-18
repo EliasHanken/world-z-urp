@@ -11,10 +11,12 @@ public class UIManager : MonoBehaviour
     public GameObject pauseObject;
     public GameObject copyright;
     public Slider volumeSlider;
+    public GameObject missionComplete;
     public bool playerDead = false;
     public string scene_level_name;
 
     private bool _pause = false;
+    public bool _override = false;
     private float fixedDeltaTime;
     void Awake()
     {
@@ -23,6 +25,7 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
+        if(missionComplete.activeInHierarchy)return;
         if(Input.GetKeyDown(pauseButton))
         {
             if(_pause && !pauseObject.activeInHierarchy) return;
