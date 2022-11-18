@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.057671774, g: 0.08864331, b: 0.1509434, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 54fe2f000ad8f424fb63cc3ea0ae2bb2, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 2d796ced94d61438fbab81b194038162, type: 2}
   m_HaloStrength: 0.179
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.1705379, g: 0.16542517, b: 0.16006361, a: 1}
+  m_IndirectSpecularColor: {r: 0.19591501, g: 0.23728395, b: 0.31093928, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7872,14 +7872,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 862436951}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.082, z: 0.763}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 0, y: 0.082, z: 0.7239}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2181358230587831932}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!1 &863823318
 GameObject:
   m_ObjectHideFlags: 0
@@ -8839,6 +8839,38 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3337034006038369020, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.102
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337034006038369020, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.129
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337034006038369020, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.071
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337034006038369021, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337034006038369022, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337034006038369022, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337034006038369022, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337034006038369022, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
+      propertyPath: m_Intensity
+      value: 2.77
+      objectReference: {fileID: 0}
     - target: {fileID: 3337034006047112049, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -8861,12 +8893,24 @@ PrefabInstance:
       objectReference: {fileID: -8741449882071008781, guid: 901cbc0582ec5f34eb5d92930359791a, type: 2}
     - target: {fileID: 3337034007346084639, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3879578112564552196, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3879578112564552197, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3879578112564552198, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
       propertyPath: ammoUI
       value: 
       objectReference: {fileID: 1647285819}
+    - target: {fileID: 3879578112564552198, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4625953051378553907, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -8937,7 +8981,7 @@ PrefabInstance:
       objectReference: {fileID: 1542641884}
     - target: {fileID: 4716666903313972316, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 919
+      value: 2967
       objectReference: {fileID: 0}
     - target: {fileID: 4942091914680818065, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
       propertyPath: m_Enabled
@@ -8961,6 +9005,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6859543301402336273, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
       propertyPath: Volume
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6859543301402336273, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
+      propertyPath: max_fps
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6859543301402336273, guid: 8477eb351b646f94498879f9b9f02801, type: 3}
@@ -13092,7 +13140,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0.91
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -14819,11 +14867,11 @@ AudioSource:
   m_GameObject: {fileID: 1315500252}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 24300002, guid: 901cbc0582ec5f34eb5d92930359791a, type: 2}
+  OutputAudioMixerGroup: {fileID: -8741449882071008781, guid: 901cbc0582ec5f34eb5d92930359791a, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0.91
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -14940,10 +14988,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixerGroup: {fileID: -8741449882071008781, guid: 901cbc0582ec5f34eb5d92930359791a, type: 2}
-  recoilNoAds: {x: -11.5, y: 26.5, z: 17.7}
-  recoilNoAdsPreferences: {x: 0, y: 10, z: 20}
-  recoilAds: {x: -9.04, y: -10, z: 10}
-  recoilAdsPreferences: {x: 0.2, y: 22.5, z: 20}
+  recoilNoAds: {x: -10, y: -10, z: 0}
+  recoilNoAdsPreferences: {x: 0, y: 20, z: 15}
+  recoilAds: {x: 0.3, y: -10, z: 10}
+  recoilAdsPreferences: {x: 0, y: 22.5, z: 20}
   fpsCam: {fileID: 1749478749}
   preset: 0
   fleshHit: {fileID: 8300000, guid: 0e7cfa3990115e640b4904c008098b74, type: 3}
@@ -14953,14 +15001,14 @@ MonoBehaviour:
   fireRate: 2
   defaultAmmoSpare: 60
   clipSize: 30
-  currentAmmo: 46
-  currentAmmoInMagazine: 128
+  currentAmmo: 5
+  currentAmmoInMagazine: 27
   impactForce: 1000
   damage: 1
-  headshotMultiplier: 4
+  headshotMultiplier: 5
   ammoType: 0
   gunType: 0
-  fireSound: {fileID: 8300000, guid: c849f79f6a95f7c4080848dcbfba2b18, type: 3}
+  fireSound: {fileID: 8300000, guid: 04dc44839ecb0cf49932a7a58d86c4ce, type: 3}
   animator: {fileID: 687329097}
   muzzlePos: {fileID: 1458291807}
   muzzleFlash: {fileID: 198000012944515248, guid: 9defeac88977c0d448aa4541073ee9e4, type: 3}
@@ -14968,9 +15016,9 @@ MonoBehaviour:
   impactEffectOther: {fileID: 198000013440722320, guid: 02a509a7fa70ed740ba4197e20c5d32d, type: 3}
   impactEffectFlesh: {fileID: 198000013597187216, guid: 83e55d3418297934fab882559d009285, type: 3}
   transformHolder: {fileID: 1688826902}
-  soundClipTakeout: {fileID: 8300000, guid: 2a8281e7f3883204fafc02113091dfc0, type: 3}
-  soundClipInsert: {fileID: 8300000, guid: c28194a8c5de1b147b7f41c33c36759b, type: 3}
-  soundClipReload: {fileID: 8300000, guid: e5eb8003d57ad604a8a451f754d52baa, type: 3}
+  soundClipTakeout: {fileID: 8300000, guid: ed5d764bd8333874a89111697148a482, type: 3}
+  soundClipInsert: {fileID: 8300000, guid: 003b38c48e21ff6429385a49a7ee5223, type: 3}
+  soundClipReload: {fileID: 8300000, guid: bb8fe2bf262dd144685274cc73f3ac3d, type: 3}
   soundClipNoAmmoShoot: {fileID: 8300000, guid: c849f79f6a95f7c4080848dcbfba2b18, type: 3}
 --- !u!1 &1319655606 stripped
 GameObject:
@@ -16538,14 +16586,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1458291806}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.126, z: 0.698}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
+  m_LocalPosition: {x: 0, y: 0.076, z: 0.414}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 687329096}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
 --- !u!1 &1465944850
 GameObject:
   m_ObjectHideFlags: 0

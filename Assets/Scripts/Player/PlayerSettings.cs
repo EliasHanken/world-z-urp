@@ -15,14 +15,14 @@ public class PlayerSettings : MonoBehaviour
     public float Sensitivity = 100;
     public float Volume = 1;
 
-    public int max_fps = 2;
+    public int max_fps = 5;
 
     public int graphic_preset_int = 1;
 
     void Start()
     {
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = (max_fps) * 60;
+        //Application.targetFrameRate = max_fps;
     }
 
     //void Update()

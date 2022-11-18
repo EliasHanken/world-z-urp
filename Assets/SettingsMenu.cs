@@ -48,12 +48,11 @@ public class SettingsMenu : MonoBehaviour
         qualityDropdown.value = QualitySettings.GetQualityLevel();
         qualityDropdown.RefreshShownValue();
 
-        int max_fps = Application.targetFrameRate;
-        if(max_fps == -1){
-            maxFPSDropdown.value = 4;
-        }
-        SetMaxFps(4);
+        //int max_fps = Application.targetFrameRate;
+        maxFPSDropdown.value = 4;
         maxFPSDropdown.RefreshShownValue();
+        SetMaxFps(4);
+        
 
         sensitivitySlider.value = 500f;
         adsSlider.value = 0.7f;
@@ -124,7 +123,7 @@ public class SettingsMenu : MonoBehaviour
     }
 
     public void SaveSettings(){
-        SettingsData settingsData = new SettingsData(_ads,_sens,
+        SettingsData settingsData = new SettingsData(adsSlider.value,sensitivitySlider.value,
             volumeSFX.value,volumeMaster.value,volumeMusic.value,
             resolutionDropdown.value,
             qualityDropdown.value,
