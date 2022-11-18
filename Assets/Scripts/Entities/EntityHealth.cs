@@ -7,6 +7,7 @@ public class EntityHealth : MonoBehaviour
 {
     [SerializeField]
     public float health = 20f;
+    public float maxHealth = 20f;
     public bool isPlayer = false;
     public ParticleSystem deathEffect;
     public float deathTime = 3f;
@@ -21,6 +22,11 @@ public class EntityHealth : MonoBehaviour
     public Image damageOverlay;
     Rigidbody[] rigidbodies;
     Collider[] colliders;
+
+    private float currentVelocity;
+    private Color currentColor;
+
+
 
     void Start(){
         if(isPlayer){
@@ -56,11 +62,38 @@ public class EntityHealth : MonoBehaviour
                 {
                     Die();
                 }
+            }else{
+                float currentValue = Mathf.SmoothDamp(healthBar.value, 0,ref currentVelocity, 20*Time.deltaTime);
+                healthBar.value = currentValue;
+                PlayerDie();
             }
+            
         }
         if(isPlayer){
-            healthBar.value = health;
+            float currentValue = Mathf.SmoothDamp(healthBar.value, health,ref currentVelocity, 20*Time.deltaTime);
+            healthBar.value = currentValue;
         }
+
+        
+    }
+
+    public void giveHealth(int _health){
+        float healthNeed = maxHealth - health;
+        if(_health > healthNeed){
+            health += healthNeed;
+        }else{
+            health += _health;
+        }
+        float alpha = Mathf.Abs((health/20)-1);
+            //Debug.Log(alpha);
+            //current.a = alpha;
+            //damageOverlay.color = current;
+        if(health >= maxHealth){
+            StartCoroutine(instantiateHealOverlay(0.0f,0.5f));
+        }else{
+            StartCoroutine(instantiateHealOverlay(alpha,0.5f));
+        }
+        
     }
 
     private void Die()
@@ -78,6 +111,32 @@ public class EntityHealth : MonoBehaviour
         {
             Destroy(item);
         }
+    }
+
+    private void PlayerDie(){
+        if(GameObject.FindGameObjectWithTag("GameManager") == null) return;
+        GameObject.FindGameObjectWithTag("GameManager").SetActive(false);
+        //GameObject.FindGameObjectWithTag("Player").transform.Find("WeaponRenderer").GetComponent<Camera>().enabled = false;
+        GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>().playerDead = true;
+        GameObject.FindGameObjectWithTag("UIManager").transform.Find("DeathScreen").gameObject.SetActive(true);
+
+        // Pause Menu effects
+        Time.timeScale = 0.1f;
+        foreach(GameObject go in GameObject.FindGameObjectsWithTag("Zombie")){
+            AudioSource audioSource = go.GetComponent<AudioSource>();
+            audioSource.volume = 0.0f;
+        }
+        foreach(GameObject go in GameObject.FindGameObjectsWithTag("EnvironmentSounds")){
+            AudioSource audioSource = go.GetComponent<AudioSource>();
+            audioSource.volume = 0.0f;
+        }
+        foreach(GameObject go in GameObject.FindGameObjectsWithTag("Player")){
+                AudioSource audioSource = go.GetComponent<AudioSource>();
+                audioSource.volume = 0.0f;
+            }
+        //AudioListener.volume = 1f;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None; 
     }
 
     IEnumerator KillEntity(){
@@ -132,6 +191,19 @@ public class EntityHealth : MonoBehaviour
         Color currentColor = damageOverlay.color;
         Color newColor = damageOverlay.color;
         newColor.a = newAlpha;
+        float t = 0f;
+        while(t < time){
+            t += Time.deltaTime / time;
+            damageOverlay.color = Color.Lerp(currentColor,newColor,t);
+            yield return null;
+        }
+    }
+
+    public IEnumerator instantiateHealOverlay(float newAlpha,float time){
+        float currentAlpha = damageOverlay.color.a;
+        Color currentColor = damageOverlay.color;
+        Color newColor = damageOverlay.color;
+        newColor.a = 0;
         float t = 0f;
         while(t < time){
             t += Time.deltaTime / time;

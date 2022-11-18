@@ -118,9 +118,9 @@ public class Zombie : MonoBehaviour
                 }
                 break;
             }
-        foreach(Transform eye in eyeSights){
-            Debug.DrawRay(eye.position,eye.forward * eyeSightLength,Color.red);
-        }
+        //foreach(Transform eye in eyeSights){
+        //    Debug.DrawRay(eye.position,eye.forward * eyeSightLength,Color.red);
+        //}
         
     }
 
@@ -236,6 +236,7 @@ public class Zombie : MonoBehaviour
         }
         if(containsPlayer){
             
+            /*
             RaycastHit hit;
             if(Physics.Raycast(eyeSight.position,eyeSight.forward,out hit,eyeSightLength)){
                 if(hit.collider.tag != "Player"){
@@ -243,11 +244,18 @@ public class Zombie : MonoBehaviour
                     return;
                 }
             }
+            */
+            bool canSeePlayer = GetComponent<FieldOfView>().canSeePlayer;
+            if(!canSeePlayer){
+                _currentState = ZombieState.Idle;
+                return;
+            }
             if(Vector3.Distance(player.transform.position,transform.position) <= 2.4f){
                 _animator.SetBool("attack",true);
             }else{
                 _animator.SetBool("attack",false);
             }
+
         }else{
             _currentState = ZombieState.Idle;
             return;

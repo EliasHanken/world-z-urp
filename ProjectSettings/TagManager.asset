@@ -7,6 +7,15 @@ TagManager:
   - EntityHead
   - Weapon
   - Fire
+  - UIManager
+  - Zombie
+  - ObjectiveHandler
+  - RadarBlip
+  - NPC
+  - Objective
+  - CrosshairManager
+  - EnvironmentSounds
+  - AmmoHud
   layers:
   - Default
   - TransparentFX
@@ -18,8 +27,8 @@ TagManager:
   - Interactable
   - NoCollision
   - Radar
-  - 
-  - 
+  - Player
+  - Obstruction
   - 
   - 
   - 

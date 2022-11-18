@@ -7,11 +7,11 @@ public class ProceduralRecoil : MonoBehaviour
     Vector3 currentRotation, targetRotation, targetPosition, currentPosition, initialGunPosition;
     public Transform cam;
 
-    [SerializeField] float recoilX;
-    [SerializeField] float recoilY;
-    [SerializeField] float recoilZ;
+    [SerializeField] public float recoilX;
+    [SerializeField] public float recoilY;
+    [SerializeField] public float recoilZ;
 
-    [SerializeField] float kickBackZ;
+    [SerializeField] public float kickBackZ;
 
     public float snappiness, returnAmount;
 

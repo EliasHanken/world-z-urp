@@ -9,18 +9,20 @@ public class PlayerSettings : MonoBehaviour
     {
         Poop,Medium,High,Ultra,Custom
     }
+
+    public AudioClip settingPressSound;
     public GraphicSettingPreset graphicSettingPreset = GraphicSettingPreset.High;
     public float Sensitivity = 100;
     public float Volume = 1;
 
-    public int max_fps = 2;
+    public int max_fps = 5;
 
     public int graphic_preset_int = 1;
 
     void Start()
     {
         QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = (max_fps) * 60;
+        //Application.targetFrameRate = max_fps;
     }
 
     //void Update()
@@ -43,6 +45,22 @@ public class PlayerSettings : MonoBehaviour
     {
         graphic_preset_int = level;
         QualitySettings.SetQualityLevel(graphic_preset_int);
+
+        GameObject instantiatedAS = new GameObject();
+        instantiatedAS.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
+                        AudioSource audioSource = instantiatedAS.AddComponent<AudioSource>();
+                        AudioReverbFilter filter = instantiatedAS.AddComponent<AudioReverbFilter>();
+                        filter.reverbPreset = AudioReverbPreset.Arena;
+                        audioSource.spatialBlend = 0.0f;
+                        audioSource.pitch = 0.7f;
+                        audioSource.clip = settingPressSound;
+                        audioSource.Play();
+                        StartCoroutine(DestroyComponent(instantiatedAS));
+    }
+
+    IEnumerator DestroyComponent(GameObject go){
+        yield return new WaitForSeconds(4f);
+        //Destroy(go);
     }
 
 }

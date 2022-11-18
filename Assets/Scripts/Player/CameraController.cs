@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    public float mouseSensitivity = 100f;
-    public float mouseADSmultiplier = 0.5f;
+    public float mouseSensitivity = 500f;
+    public float mouseADSmultiplier = 0.7f;
     public Transform playerBody;
     float xRotation = 0f;
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        if(SaveSystem.LoadSettingsData() != null){
+            SettingsData settingsData = SaveSystem.LoadSettingsData();
+            mouseSensitivity = settingsData.sensitivity;
+            mouseADSmultiplier = settingsData.adsMultiplier;
+        }
     }
 
     // Update is called once per frame
@@ -25,5 +30,13 @@ public class CameraController : MonoBehaviour
 
         transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         playerBody.Rotate(Vector3.up * mouseX);
+    }
+
+    public void updateSens(){
+        if(SaveSystem.LoadSettingsData() != null){
+            SettingsData settingsData = SaveSystem.LoadSettingsData();
+            mouseSensitivity = settingsData.sensitivity;
+            mouseADSmultiplier = settingsData.adsMultiplier;
+        }
     }
 }

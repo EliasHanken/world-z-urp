@@ -80,7 +80,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000043586238, y: 0.2815031, z: 0.000000031680116}
+  m_ConnectedAnchor: {x: 0.00000054761426, y: 0.28150287, z: 0.000000016778769}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -537,7 +537,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.115696155, y: -0.081741445, z: 0.0116697}
+  m_ConnectedAnchor: {x: -0.1156963, y: -0.081741445, z: 0.011668758}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -680,7 +680,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000017805723, y: 0.41253304, z: -0.000000081490725}
+  m_ConnectedAnchor: {x: 0.000000029729563, y: 0.41253304, z: 0.0000008591451}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1301,7 +1301,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.000000007444583, y: 0.28150353, z: 0.00000006148239}
+  m_ConnectedAnchor: {x: 0.00000097602, y: 0.2815034, z: 0.00000006148255}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -1602,7 +1602,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: 1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.23643743, y: 0.32470238, z: -0.07873103}
+  m_ConnectedAnchor: {x: 0.23643757, y: 0.32470232, z: -0.07873009}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -1650,6 +1650,7 @@ GameObject:
   - component: {fileID: 2730433807896894752}
   - component: {fileID: 2730433807896894759}
   - component: {fileID: 6723714611657067473}
+  - component: {fileID: 7270304742922619955}
   m_Layer: 7
   m_Name: Warzombie
   m_TagString: Zombie
@@ -1672,7 +1673,7 @@ Transform:
   - {fileID: 7943954628089633373}
   - {fileID: 2444171119927573893}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: -189.04, z: 0}
 --- !u!95 &8398904054677889203
 Animator:
@@ -1705,13 +1706,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 1.8
-  m_Radius: 0.04
+  m_Height: 1.9
+  m_Radius: 0.25
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0.98, z: 0}
+  m_Center: {x: 0, y: 0.96, z: 0}
 --- !u!114 &2730433807896894752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1746,6 +1747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e9f906b61d43b4090daa187574f864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
   _camera: {fileID: 0}
   _standUpStateName: Stand Up
   _standUpClipName: Stand Up
@@ -1774,7 +1776,7 @@ AudioSource:
   m_GameObject: {fileID: 2964805363479896179}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 901cbc0582ec5f34eb5d92930359791a, type: 2}
   m_audioClip: {fileID: 8300000, guid: f69d617a308a5c44bad1ec1d75d688e7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1861,6 +1863,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7270304742922619955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2964805363479896179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43b4df513a22baf4f9e75b39f0b65b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 8
+  angle: 268
+  playerRef: {fileID: 0}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 1024
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  canSeePlayer: 0
 --- !u!1 &3089877848547492648
 GameObject:
   m_ObjectHideFlags: 0
@@ -2162,7 +2186,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000015972182, y: 0.1730001, z: -0.0000004917383}
+  m_ConnectedAnchor: {x: -0.0000000144355, y: 0.17300083, z: 0.00000011920929}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 1, z: 0}
   m_TwistLimitSpring:
@@ -2306,7 +2330,7 @@ GameObject:
   - component: {fileID: 2730433807381865442}
   m_Layer: 7
   m_Name: mixamorig:Head
-  m_TagString: Untagged
+  m_TagString: EntityHead
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2882,7 +2906,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.00000009400537, y: 0.41474983, z: 0.00000040605664}
+  m_ConnectedAnchor: {x: 0.00000024987276, y: 0.41474992, z: -0.0000005289912}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -3118,7 +3142,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000005056032, y: 0.22385955, z: -0.0035238024}
+  m_ConnectedAnchor: {x: -0.00000035589312, y: 0.22385955, z: -0.00352286}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -3325,7 +3349,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000041909516, y: 0.22159287, z: -0.00000008195639}
+  m_ConnectedAnchor: {x: 0.00000051036477, y: 0.22159274, z: -0.00000009685755}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
