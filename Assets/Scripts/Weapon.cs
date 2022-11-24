@@ -309,7 +309,8 @@ public class Weapon : MonoBehaviour
                         instantiatedAS.AddComponent<AudioSource>();
                         AudioSource audioSource = instantiatedAS.GetComponent<AudioSource>();
                         
-                        audioSource.pitch = 0.8f;
+                        audioSource.pitch = 1f;
+                        audioSource.volume = 0.3f;
                         audioSource.spatialBlend = 1.0f;
                         audioSource.transform.position = hit.transform.position;
                         audioSource.outputAudioMixerGroup = audioMixerGroup;

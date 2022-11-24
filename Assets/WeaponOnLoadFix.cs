@@ -9,8 +9,8 @@ public class WeaponOnLoadFix : MonoBehaviour
     void Start()
     {
         foreach(GameObject ob in gameObjects){
-            gameObject.SetActive(false);
-            gameObject.SetActive(true);
+            //gameObject.SetActive(false);
+            //gameObject.SetActive(true);
         }
     }
 
