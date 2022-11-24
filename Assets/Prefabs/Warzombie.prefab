@@ -1673,7 +1673,7 @@ Transform:
   - {fileID: 7943954628089633373}
   - {fileID: 2444171119927573893}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -189.04, z: 0}
 --- !u!95 &8398904054677889203
 Animator:
@@ -1768,6 +1768,8 @@ MonoBehaviour:
   - {fileID: 284843870984375934}
   - {fileID: 3796889997828583881}
   - {fileID: 4672645592748456079}
+  usingNavAgent: 0
+  navMeshAgent: {fileID: 0}
 --- !u!82 &6723714611657067473
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1876,8 +1878,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b4df513a22baf4f9e75b39f0b65b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 8
-  angle: 268
+  radius: 20
+  angle: 360
   playerRef: {fileID: 0}
   targetMask:
     serializedVersion: 2
