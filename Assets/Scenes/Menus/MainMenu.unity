@@ -1041,7 +1041,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4568169401292284448, guid: 9936ca16242215840a755b239bc45c8e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4568169401292284460, guid: 9936ca16242215840a755b239bc45c8e, type: 3}
       propertyPath: m_Camera
@@ -1053,7 +1053,7 @@ PrefabInstance:
       objectReference: {fileID: 1922285363}
     - target: {fileID: 4568169401674386686, guid: 9936ca16242215840a755b239bc45c8e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4568169401884517683, guid: 9936ca16242215840a755b239bc45c8e, type: 3}
       propertyPath: m_Name
