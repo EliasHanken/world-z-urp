@@ -1772,6 +1772,7 @@ MonoBehaviour:
   - {fileID: 4672645592748456079}
   usingNavAgent: 1
   navMeshAgent: {fileID: 576085558}
+  fieldOfView: {fileID: 7270304742922619955}
 --- !u!82 &6723714611657067473
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1785,7 +1786,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: f69d617a308a5c44bad1ec1d75d688e7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 0.76
+  m_Pitch: 0.91
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -1793,9 +1794,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 12
+  MaxDistance: 15
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1803,23 +1804,41 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      time: 0.0113192275
+      value: 0.9891052
+      inSlope: -0.16997285
+      outSlope: -0.16997285
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.1861048
+    - serializedVersion: 3
+      time: 0.23490605
+      value: 0.80780435
+      inSlope: -2.3494258
+      outSlope: -2.3494258
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
+      outWeight: 0.12221667
+    - serializedVersion: 3
+      time: 0.6016917
+      value: 0.15855354
+      inSlope: -1.2750921
+      outSlope: -1.2750921
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.382886
       outWeight: 0.33333334
     - serializedVersion: 3
-      time: 1
+      time: 0.9815521
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.21082036
+      outSlope: -0.21082036
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0.54399484
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -1858,7 +1877,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1.066
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1880,8 +1899,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b4df513a22baf4f9e75b39f0b65b17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 8
-  angle: 272
+  radius: 12
+  angle: 360
   playerRef: {fileID: 0}
   targetMask:
     serializedVersion: 2

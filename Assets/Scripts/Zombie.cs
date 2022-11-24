@@ -56,6 +56,7 @@ public class Zombie : MonoBehaviour
     public List<Transform> eyeSights;
     public bool usingNavAgent;
     public NavMeshAgent navMeshAgent;
+    public FieldOfView fieldOfView;
 
     void Awake()
     {
@@ -114,13 +115,8 @@ public class Zombie : MonoBehaviour
                 _animator.SetBool("idle",true);
                 _animator.SetBool("walk",false);
                 audioSource.enabled = true;
-                RaycastHit hit;
-                foreach(Transform eye in eyeSights){
-                    if(Physics.Raycast(eye.position,eye.forward,out hit,eyeSightLength)){
-                        if(hit.collider.tag == "Player"){
-                            _currentState = ZombieState.Running;
-                        }
-                    }
+                if(fieldOfView.canSeePlayer){
+                    _currentState = ZombieState.Running;
                 }
                 break;
             }
@@ -233,15 +229,8 @@ public class Zombie : MonoBehaviour
     {
         navMeshAgent.enabled = true;
         audioSource.enabled = true;
-        bool containsPlayer = false;
-        GameObject player = null;
-        foreach(Collider collider in Physics.OverlapSphere(transform.position,eyeSightLength)){
-            if(collider.tag == "Player"){
-                containsPlayer = true;
-                player = collider.gameObject;
-            }
-        }
-        if(containsPlayer){
+        bool canSeePlayer = GetComponent<FieldOfView>().canSeePlayer;
+        if(canSeePlayer){
             
             /*
             RaycastHit hit;
@@ -252,12 +241,12 @@ public class Zombie : MonoBehaviour
                 }
             }
             */
-            bool canSeePlayer = GetComponent<FieldOfView>().canSeePlayer;
+            
             if(!canSeePlayer){
                 _currentState = ZombieState.Idle;
                 return;
             }
-            if(Vector3.Distance(player.transform.position,transform.position) <= 2.4f){
+            if(Vector3.Distance(GetComponent<FieldOfView>().playerRef.transform.position,transform.position) <= 2.4f){
                 _animator.SetBool("attack",true);
             }else{
                 _animator.SetBool("attack",false);
@@ -276,7 +265,7 @@ public class Zombie : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(direction, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 260 * Time.deltaTime);
         }else{
-            navMeshAgent.destination = player.transform.position;
+            navMeshAgent.destination = GetComponent<FieldOfView>().playerRef.transform.position;
         }
         
         

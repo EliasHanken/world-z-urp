@@ -18,9 +18,25 @@ public class UIManager : MonoBehaviour
     private bool _pause = false;
     public bool _override = false;
     private float fixedDeltaTime;
-    void Awake()
+
+    private float pausedZombieAudio;
+    private float pausedPlayerAudio;
+    private float pausedEnvironmentAudio;
+    void Start()
     {
         fixedDeltaTime = Time.fixedDeltaTime;
+        foreach(GameObject go in GameObject.FindGameObjectsWithTag("Zombie")){
+                AudioSource audioSource = go.GetComponent<AudioSource>();
+                pausedZombieAudio = audioSource.volume;
+            }
+            foreach(GameObject go in GameObject.FindGameObjectsWithTag("EnvironmentSounds")){
+                AudioSource audioSource = go.GetComponent<AudioSource>();
+                pausedEnvironmentAudio = audioSource.volume;
+            }
+            foreach(GameObject go in GameObject.FindGameObjectsWithTag("Player")){
+                AudioSource audioSource = go.GetComponent<AudioSource>();
+                pausedPlayerAudio = audioSource.volume;
+            }
     }
 
     void Update()
@@ -55,15 +71,15 @@ public class UIManager : MonoBehaviour
             if(playerDead)return;
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("Zombie")){
                 AudioSource audioSource = go.GetComponent<AudioSource>();
-                audioSource.volume = 1f;
+                audioSource.volume = pausedZombieAudio;
             }
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("EnvironmentSounds")){
                 AudioSource audioSource = go.GetComponent<AudioSource>();
-                audioSource.volume = 1f;
+                audioSource.volume = pausedEnvironmentAudio;
             }
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("Player")){
                 AudioSource audioSource = go.GetComponent<AudioSource>();
-                audioSource.volume = 1f;
+                audioSource.volume = pausedPlayerAudio;
             }
             Time.timeScale = 1f;
             Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;

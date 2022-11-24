@@ -5,7 +5,7 @@ using UnityEngine;
 public class InsideAudioScript : MonoBehaviour
 {
 
-    private enum State{
+    public enum State{
         None, Enter, Exit
     }
 
@@ -13,7 +13,7 @@ public class InsideAudioScript : MonoBehaviour
     private float time;
     private AudioSource audioSource;
     private AudioLowPassFilter lowPassFilter;
-    private State state;
+    public State state;
 
 
     void Start()
@@ -21,7 +21,7 @@ public class InsideAudioScript : MonoBehaviour
         audioSource = GetComponentInParent<AudioSource>();
         lowPassFilter = GetComponentInParent<AudioLowPassFilter>();
 
-        lowPassFilter.cutoffFrequency = 22000;
+        lowPassFilter.cutoffFrequency = 22000f;
         state = State.None;
     }
 
@@ -39,7 +39,7 @@ public class InsideAudioScript : MonoBehaviour
     }
 
     void enterLerp(){
-        float newFreq = Mathf.Lerp(lowPassFilter.cutoffFrequency,250,time*Time.deltaTime);
+        float newFreq = Mathf.Lerp(lowPassFilter.cutoffFrequency,300,time*Time.deltaTime);
         lowPassFilter.cutoffFrequency = newFreq;
     }
 

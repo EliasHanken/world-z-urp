@@ -478,7 +478,7 @@ MonoBehaviour:
   status: 0
   _tag: Zombie
   kills: 0
-  targetKills: 3
+  targetKills: 10
   rect_transform: {fileID: 3117890536607170918}
 --- !u!1 &7471818334185452088
 GameObject:
