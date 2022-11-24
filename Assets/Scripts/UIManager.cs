@@ -51,7 +51,7 @@ public class UIManager : MonoBehaviour
             //AudioListener.volume = 1f;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None; 
-        }else{
+        }else if(!_pause){
             if(playerDead)return;
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("Zombie")){
                 AudioSource audioSource = go.GetComponent<AudioSource>();

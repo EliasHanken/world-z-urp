@@ -108,10 +108,8 @@ public class Zombie : MonoBehaviour
                 DeadBehaviour();
                 break;
             case ZombieState.Idle:
-                if(usingNavAgent){
-                    navMeshAgent.destination = _camera.transform.position;
-                }
-                
+                navMeshAgent.enabled = true;
+                _animator.SetBool("attack",false);
                 _animator.SetBool("run",false);
                 _animator.SetBool("idle",true);
                 _animator.SetBool("walk",false);
@@ -233,6 +231,7 @@ public class Zombie : MonoBehaviour
 
     private void RunningBehaviour()
     {
+        navMeshAgent.enabled = true;
         audioSource.enabled = true;
         bool containsPlayer = false;
         GameObject player = null;
@@ -290,6 +289,9 @@ public class Zombie : MonoBehaviour
     private void RagdollBehaviour()
     {
         audioSource.enabled = false;
+        if(usingNavAgent){
+            navMeshAgent.enabled = false;
+        }
         if(_reborn){
             isDead = true;
             _currentState = ZombieState.Dead;

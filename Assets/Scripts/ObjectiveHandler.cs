@@ -54,7 +54,7 @@ public class ObjectiveHandler : MonoBehaviour
         if(instantiatedObj.Count == 1){
             GameObject.FindGameObjectWithTag("UIManager").GetComponent<UIManager>()._override = true;
             missionComplete.SetActive(true);
-                Time.timeScale = 0.1f;
+                Time.timeScale = 0.3f;
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("Zombie")){
                 AudioSource audioSource = go.GetComponent<AudioSource>();
                 audioSource.volume = 0.0f;
