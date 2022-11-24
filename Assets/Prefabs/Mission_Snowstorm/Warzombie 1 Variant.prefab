@@ -1,0 +1,65 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3497889039391279544
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2481142999410817737, guid: d32cf7ffeaa5ae34b921ddc74317e870, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481142999410817737, guid: d32cf7ffeaa5ae34b921ddc74317e870, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.850427
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481142999410817737, guid: d32cf7ffeaa5ae34b921ddc74317e870, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000035762787
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481142999410817737, guid: d32cf7ffeaa5ae34b921ddc74317e870, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -9.905465
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481142999410817737, guid: d32cf7ffeaa5ae34b921ddc74317e870, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.07880698
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481142999410817737, guid: d32cf7ffeaa5ae34b921ddc74317e870, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481142999410817737, guid: d32cf7ffeaa5ae34b921ddc74317e870, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.9968899
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481142999410817737, guid: d32cf7ffeaa5ae34b921ddc74317e870, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481142999410817737, guid: d32cf7ffeaa5ae34b921ddc74317e870, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481142999410817737, guid: d32cf7ffeaa5ae34b921ddc74317e870, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -189.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 2481142999410817737, guid: d32cf7ffeaa5ae34b921ddc74317e870, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2964805363479896179, guid: d32cf7ffeaa5ae34b921ddc74317e870, type: 3}
+      propertyPath: m_Name
+      value: Warzombie 1 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6723714611657067473, guid: d32cf7ffeaa5ae34b921ddc74317e870, type: 3}
+      propertyPath: m_Volume
+      value: 0.8
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: d32cf7ffeaa5ae34b921ddc74317e870, type: 3}

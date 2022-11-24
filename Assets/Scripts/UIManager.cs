@@ -53,16 +53,19 @@ public class UIManager : MonoBehaviour
         if(_pause){
             Time.timeScale = 0.0f;
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("Zombie")){
-                AudioSource audioSource = go.GetComponent<AudioSource>();
-                audioSource.volume = 0.0f;
+                //AudioSource audioSource = go.GetComponent<AudioSource>();
+                //audioSource.volume = 0.0f;
+                go.GetComponent<AudioSource>().enabled = false;
             }
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("EnvironmentSounds")){
-                AudioSource audioSource = go.GetComponent<AudioSource>();
-                audioSource.volume = 0.0f;
+                //AudioSource audioSource = go.GetComponent<AudioSource>();
+                //audioSource.volume = 0.0f;
+                go.GetComponent<AudioSource>().enabled = false;
             }
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("Player")){
-                AudioSource audioSource = go.GetComponent<AudioSource>();
-                audioSource.volume = 0.0f;
+                //AudioSource audioSource = go.GetComponent<AudioSource>();
+                //audioSource.volume = 0.0f;
+                go.GetComponent<AudioSource>().enabled = false;
             }
             //AudioListener.volume = 1f;
             Cursor.visible = true;
@@ -70,16 +73,19 @@ public class UIManager : MonoBehaviour
         }else if(!_pause){
             if(playerDead)return;
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("Zombie")){
-                AudioSource audioSource = go.GetComponent<AudioSource>();
-                audioSource.volume = pausedZombieAudio;
+                //AudioSource audioSource = go.GetComponent<AudioSource>();
+                //audioSource.volume = pausedZombieAudio;
+                go.GetComponent<AudioSource>().enabled = true;
             }
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("EnvironmentSounds")){
-                AudioSource audioSource = go.GetComponent<AudioSource>();
-                audioSource.volume = pausedEnvironmentAudio;
+                //AudioSource audioSource = go.GetComponent<AudioSource>();
+                //audioSource.volume = pausedEnvironmentAudio;
+                go.GetComponent<AudioSource>().enabled = true;
             }
             foreach(GameObject go in GameObject.FindGameObjectsWithTag("Player")){
-                AudioSource audioSource = go.GetComponent<AudioSource>();
-                audioSource.volume = pausedPlayerAudio;
+                //AudioSource audioSource = go.GetComponent<AudioSource>();
+                //audioSource.volume = pausedPlayerAudio;
+                go.GetComponent<AudioSource>().enabled = true;
             }
             Time.timeScale = 1f;
             Time.fixedDeltaTime = this.fixedDeltaTime * Time.timeScale;
