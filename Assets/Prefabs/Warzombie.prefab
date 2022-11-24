@@ -1651,6 +1651,8 @@ GameObject:
   - component: {fileID: 2730433807896894759}
   - component: {fileID: 6723714611657067473}
   - component: {fileID: 7270304742922619955}
+  - component: {fileID: 576085557}
+  - component: {fileID: 576085558}
   m_Layer: 7
   m_Name: Warzombie
   m_TagString: Zombie
@@ -1704,7 +1706,7 @@ CharacterController:
   m_GameObject: {fileID: 2964805363479896179}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 1.9
   m_Radius: 0.25
@@ -1755,7 +1757,7 @@ MonoBehaviour:
   _timeToResetBones: 1
   _currentState: 0
   _reborn: 0
-  canBeReborn: 1
+  canBeReborn: 0
   isDead: 0
   eyeSightLength: 8
   eyeSight: {fileID: 2730433807156331425}
@@ -1768,6 +1770,8 @@ MonoBehaviour:
   - {fileID: 284843870984375934}
   - {fileID: 3796889997828583881}
   - {fileID: 4672645592748456079}
+  usingNavAgent: 1
+  navMeshAgent: {fileID: 576085558}
 --- !u!82 &6723714611657067473
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1781,7 +1785,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: f69d617a308a5c44bad1ec1d75d688e7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
-  m_Pitch: 0.8
+  m_Pitch: 0.76
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -1877,7 +1881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 8
-  angle: 268
+  angle: 272
   playerRef: {fileID: 0}
   targetMask:
     serializedVersion: 2
@@ -1886,6 +1890,44 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2048
   canSeePlayer: 0
+--- !u!114 &576085557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2964805363479896179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86771cc4e4185ef4bae9c89e4351eab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 12.1
+  angle: 22.8
+  height: 4.69
+  meshColor: {r: 1, g: 0, b: 0, a: 1}
+--- !u!195 &576085558
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2964805363479896179}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.3
+  m_Speed: 3
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 360
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &3089877848547492648
 GameObject:
   m_ObjectHideFlags: 0

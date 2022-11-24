@@ -382,9 +382,13 @@ public class Weapon : MonoBehaviour
                             ObjectiveHandler objectiveHandler = obj.GetComponent<ObjectiveHandler>();
 
                             List<GameObject> kill_list_obj = objectiveHandler.getObjective(ObjectiveHandler.ObjectiveType.entity_kills);
-                            foreach(GameObject go in kill_list_obj){
-                                go.GetComponent<ObjectiveKill>().increaseProgressByOne();
+                                foreach(GameObject go in kill_list_obj){
+                                    if(go.GetComponent<ObjectiveKill>() != null){
+                                        go.GetComponent<ObjectiveKill>().increaseProgressByOne();
+                                    }
+                                    
                             }
+                            zombie.isDead = true;
                         }
                     }
 
