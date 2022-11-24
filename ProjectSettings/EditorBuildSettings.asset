@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Missions/mission_snowstorm/Mission_1_Snowstorm.unity
     guid: 7cc54825928dab3488b99125276de075
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 6e09e3a5f5f380242a9cf83fcbcb42d6
   m_configObjects: {}

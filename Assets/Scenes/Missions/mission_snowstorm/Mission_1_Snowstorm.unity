@@ -13243,26 +13243,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBase
       objectReference: {fileID: 0}
-    - target: {fileID: 8845209932956124615, guid: 150e167e8583c5245b813e928bc1bf4b, type: 3}
-      propertyPath: audioMixerGroup
-      value: 
-      objectReference: {fileID: -8741449882071008781, guid: 901cbc0582ec5f34eb5d92930359791a, type: 2}
-    - target: {fileID: 8845209932956124665, guid: 150e167e8583c5245b813e928bc1bf4b, type: 3}
-      propertyPath: m_Volume
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8845209932956124665, guid: 150e167e8583c5245b813e928bc1bf4b, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 901cbc0582ec5f34eb5d92930359791a, type: 2}
-    - target: {fileID: 8845209933043531637, guid: 150e167e8583c5245b813e928bc1bf4b, type: 3}
-      propertyPath: audioMixerGroup
-      value: 
-      objectReference: {fileID: -8741449882071008781, guid: 901cbc0582ec5f34eb5d92930359791a, type: 2}
-    - target: {fileID: 8845209933043531638, guid: 150e167e8583c5245b813e928bc1bf4b, type: 3}
-      propertyPath: m_Volume
-      value: 0.8
-      objectReference: {fileID: 0}
     - target: {fileID: 9120987143911703074, guid: 150e167e8583c5245b813e928bc1bf4b, type: 3}
       propertyPath: healthBar
       value: 
