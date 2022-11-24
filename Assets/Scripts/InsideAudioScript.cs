@@ -49,10 +49,12 @@ public class InsideAudioScript : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other){
+        if(other.GetComponent<PlayerMovement>() == null)return;
         state = State.Enter;
     }
 
     private void OnTriggerExit(Collider other){
+        if(other.GetComponent<PlayerMovement>() == null)return;
         state = State.Exit;
     }
 }
