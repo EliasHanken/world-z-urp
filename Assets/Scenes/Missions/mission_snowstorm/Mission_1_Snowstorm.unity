@@ -11954,6 +11954,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gas_Mask_Police
       objectReference: {fileID: 0}
+    - target: {fileID: 8506152768503159533, guid: 0e9fc7c9b146b1b46b51b2b482e4b97e, type: 3}
+      propertyPath: m_Quality
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e9fc7c9b146b1b46b51b2b482e4b97e, type: 3}
